@@ -1,0 +1,254 @@
+<title>Vertriebs-Cockpit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#FAF8F4;
+    --surface:#FFFFFF;
+    --surface-2:#F3EFE8;
+    --ink:#211E1A;
+    --ink-soft:#5C554C;
+    --ink-faint:#8A8175;
+    --line:#E4DDD1;
+    --line-strong:#D3CABB;
+    --accent:#1F5FBF;
+    --accent-soft:#E9F0FB;
+    --good:#2E7D5B;
+    --good-soft:#E4F0EA;
+    --warn:#C77A2B;
+    --warn-soft:#F7ECDD;
+    --shadow:0 1px 2px rgba(33,30,26,.04),0 8px 24px rgba(33,30,26,.06);
+    --radius:14px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#16140F;
+      --surface:#211E19;
+      --surface-2:#2A261F;
+      --ink:#F3EEE5;
+      --ink-soft:#B8AF9F;
+      --ink-faint:#8B8271;
+      --line:#332E26;
+      --line-strong:#443D32;
+      --accent:#6FA0EC;
+      --accent-soft:#1E2A3E;
+      --good:#5FB98C;
+      --good-soft:#193026;
+      --warn:#E0A45C;
+      --warn-soft:#33271733;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#16140F;
+    --surface:#211E19;
+    --surface-2:#2A261F;
+    --ink:#F3EEE5;
+    --ink-soft:#B8AF9F;
+    --ink-faint:#8B8271;
+    --line:#332E26;
+    --line-strong:#443D32;
+    --accent:#6FA0EC;
+    --accent-soft:#1E2A3E;
+    --good:#5FB98C;
+    --good-soft:#193026;
+    --warn:#E0A45C;
+    --warn-soft:#332717;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Instrument Sans",system-ui,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:48px 24px 80px}
+  .num{font-variant-numeric:tabular-nums}
+
+  header.top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:8px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 10px}
+  h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(30px,5vw,44px);line-height:1.05;margin:0;letter-spacing:-.01em;text-wrap:balance}
+  .sub{color:var(--ink-soft);margin:10px 0 0;font-size:15px;max-width:56ch}
+  .updated{font-size:13px;color:var(--ink-faint);white-space:nowrap}
+  .updated b{color:var(--ink-soft);font-weight:600}
+
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:34px 0 12px}
+  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 16px;box-shadow:var(--shadow)}
+  .kpi .val{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:38px;line-height:1;letter-spacing:-.02em}
+  .kpi .lab{margin-top:8px;font-size:13px;color:var(--ink-soft);font-weight:500}
+  .kpi.total{background:var(--accent);border-color:var(--accent);color:#fff}
+  .kpi.total .lab{color:rgba(255,255,255,.86)}
+
+  .legend{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:26px 0 14px;font-size:13px;color:var(--ink-soft)}
+  .legend .dot{display:inline-flex;align-items:center;gap:7px}
+  .legend .swatch{width:10px;height:10px;border-radius:50%}
+
+  .day{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:12px;box-shadow:var(--shadow);overflow:hidden}
+  .day[open]{border-color:var(--line-strong)}
+  summary{list-style:none;cursor:pointer;padding:16px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  .caret{color:var(--ink-faint);transition:transform .2s ease;font-size:13px}
+  .day[open] .caret{transform:rotate(90deg)}
+  .date{display:flex;flex-direction:column;min-width:120px}
+  .date .d{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:19px;line-height:1.1}
+  .date .wd{font-size:12px;color:var(--ink-faint);letter-spacing:.04em}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;justify-self:start}
+  .chip{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--surface-2);color:var(--ink-soft);white-space:nowrap}
+  .chip b{font-variant-numeric:tabular-nums}
+  .chip.on{background:var(--accent-soft);color:var(--accent)}
+  .daytotal{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:26px;letter-spacing:-.02em;text-align:right;min-width:40px}
+  .daytotal span{display:block;font-family:"Instrument Sans",sans-serif;font-weight:500;font-size:11px;color:var(--ink-faint);letter-spacing:.04em}
+
+  .body{padding:4px 20px 22px;border-top:1px solid var(--line);display:grid;gap:18px}
+  .block h3{margin:16px 0 8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;display:flex;align-items:center;gap:9px}
+  .block h3 .bar{width:3px;height:14px;border-radius:2px;background:var(--accent)}
+  .block.good h3 .bar{background:var(--good)}
+  .block.warn h3 .bar{background:var(--warn)}
+  .names{display:flex;flex-wrap:wrap;gap:7px}
+  .name{font-size:13px;padding:4px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink-soft)}
+  .name em{font-style:normal;color:var(--ink-faint);font-size:11.5px}
+  .note{font-size:13.5px;color:var(--ink-soft);background:var(--surface-2);border-radius:10px;padding:11px 14px;line-height:1.5}
+  .note.warn{background:var(--warn-soft)}
+  .note b{color:var(--ink)}
+
+  footer{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-faint);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  a{color:var(--accent)}
+  @media (max-width:560px){
+    summary{grid-template-columns:auto 1fr;gap:12px}
+    .daytotal{grid-column:2;text-align:left;margin-top:4px}
+    .chips{grid-column:1/-1}
+  }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <p class="eyebrow">Die Skalierer Group · LinkedIn</p>
+      <h1>Vertriebs-Cockpit</h1>
+      <p class="sub">Tägliche Netzwerk-Aktivität als Vertriebsarchitekt — Geburtstage, Jobwechsel, Vernetzungen, Kommentare und geführte Gespräche. Klick auf einen Tag zeigt, wer erreicht wurde.</p>
+    </div>
+    <div class="updated">Stand <b>05.09.2026</b></div>
+  </header>
+
+  <section class="kpis" aria-label="Gesamtsummen">
+    <div class="kpi total"><div class="val num">124</div><div class="lab">Aktionen gesamt</div></div>
+    <div class="kpi"><div class="val num">61</div><div class="lab">🎂 Geburtstage</div></div>
+    <div class="kpi"><div class="val num">29</div><div class="lab">🚀 Jobwechsel</div></div>
+    <div class="kpi"><div class="val num">30</div><div class="lab">🤝 Vernetzungen</div></div>
+    <div class="kpi"><div class="val num">3</div><div class="lab">💬 Kommentare</div></div>
+    <div class="kpi"><div class="val num">1</div><div class="lab">🎯 Gespräche</div></div>
+  </section>
+
+  <div class="legend">
+    <span class="dot"><span class="swatch" style="background:var(--accent)"></span>Outreach / Reichweite</span>
+    <span class="dot"><span class="swatch" style="background:var(--good)"></span>Erledigt</span>
+    <span class="dot"><span class="swatch" style="background:var(--warn)"></span>Offen / Nachfassen</span>
+  </div>
+
+  <!-- 05.09 -->
+  <details class="day" open>
+    <summary>
+      <span class="caret">▶</span>
+      <span class="date"><span class="d num">05.09.</span><span class="wd">Freitag</span></span>
+      <span class="chips">
+        <span class="chip on">🎂 <b>11</b></span>
+        <span class="chip on">🚀 <b>1</b></span>
+        <span class="chip on">🤝 <b>29</b></span>
+        <span class="chip on">💬 <b>3</b></span>
+        <span class="chip on">🎯 <b>1</b></span>
+      </span>
+      <span class="daytotal num">45<span>Aktionen</span></span>
+    </summary>
+    <div class="body">
+      <div class="block"><h3><span class="bar"></span>Kommentare · 1.-Grad-Zielkunden</h3>
+        <div class="names">
+          <span class="name">Jens Patrick Eberhard <em>· MD Aluprof</em></span>
+          <span class="name">Michael Danell <em>· Automobilhandel</em></span>
+          <span class="name">Lucas Pedretti <em>· CEO Qymatix</em></span>
+        </div>
+      </div>
+      <div class="block good"><h3><span class="bar"></span>Vernetzungen · 29 gesendet</h3>
+        <div class="note"><b>29 von 30 Anfragen</b> an GF/Inhaber Mittelstand DACH gesendet (ohne Notiz, Sweet-Spot Großhandel/Industrie). Die 30. blockierte LinkedIn wegen des Wochenlimits — nächste Woche nachholbar.</div>
+      </div>
+      <div class="block warn"><h3><span class="bar"></span>Gespräch · offener Schritt</h3>
+        <div class="note warn"><b>Guido Boardman</b> — Buch-Download klappte nicht (2× gemeldet). Antwort mit Download-Hilfe + Buch-Frage vorbereitet, noch zu senden.</div>
+        <div style="margin-top:10px" class="note">Reine Danke-Reaktionen (bewusst ohne Vertrieb warmgehalten): Heiko Wickert, Oliver Brendle, Felix Kording, Valentino Ludwig, Paul Hilliger, David Wiedau, Gert Leder, Kai-Uwe Hintersdorf.</div>
+      </div>
+    </div>
+  </details>
+
+  <!-- 04.09 -->
+  <details class="day" open>
+    <summary>
+      <span class="caret">▶</span>
+      <span class="date"><span class="d num">04.09.</span><span class="wd">Donnerstag</span></span>
+      <span class="chips">
+        <span class="chip on">🎂 <b>17</b></span>
+        <span class="chip on">🚀 <b>6</b></span>
+        <span class="chip on">🤝 <b>30</b></span>
+      </span>
+      <span class="daytotal num">53<span>Aktionen</span></span>
+    </summary>
+    <div class="body">
+      <div class="block good"><h3><span class="bar"></span>Vernetzungen · 30 gesendet</h3>
+        <div class="note">Erste 3 breit („Geschäftsführer"): Hendrik Westendorff, Jochen Schwill, Benjamin Oechsle. Danach 27 gezielt im Sweet-Spot technischer Großhandel/Industrie — u.a. Dietmar Hauptmann (Eisenhandel), Ralf Lohrmann (Elektro-Großhandel), Kay Jäger, Steffen Mayle (Sanitär/Heizung), Jan Deyhle (Glasgroßhandel), Markus Thoben (Team Beverage), Sascha Maas (Hansa-Papier), Jürgen Laukandt (Euro Stahl-Handel).</div>
+      </div>
+      <div class="block"><h3><span class="bar"></span>Geburtstage · 17</h3>
+        <div class="names">
+          <span class="name">Mouez Feriani</span><span class="name">Maximilian Skaba</span><span class="name">René Muders</span><span class="name">Felix Kording</span><span class="name">Samuel A. Tomic</span><span class="name">Kevin Grote</span><span class="name">Lili Petra Wlasitsch</span><span class="name">Holger Groote</span><span class="name">hüseyin nair</span><span class="name">Isabella Dapka</span><span class="name">Oliver Brendle</span><span class="name">Guido Boardman</span><span class="name">Tobias Loock</span><span class="name">Daniel Keinath</span><span class="name">Dennis Heitzmann</span><span class="name">Gökmen Isik</span><span class="name">Christian Beer</span>
+        </div>
+      </div>
+      <div class="block"><h3><span class="bar"></span>Jobwechsel · 6</h3>
+        <div class="names">
+          <span class="name">Uli Neumair <em>· Sattler SUN-TEX</em></span><span class="name">Michael Hontz <em>· HYDAC</em></span><span class="name">Heiko Wickert <em>· PreZero</em></span><span class="name">Kai Wilhelm <em>· Holcim</em></span><span class="name">Alessandro Giessler <em>· Averbis</em></span><span class="name">Tomasz Kroker <em>· ServiceNow</em></span>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- 02.09 -->
+  <details class="day" open>
+    <summary>
+      <span class="caret">▶</span>
+      <span class="date"><span class="d num">02.09.</span><span class="wd">Dienstag</span></span>
+      <span class="chips">
+        <span class="chip on">🚀 <b>28</b></span>
+      </span>
+      <span class="daytotal num">28<span>Aktionen</span></span>
+    </summary>
+    <div class="body">
+      <div class="block"><h3><span class="bar"></span>Jobwechsel · 28 gesendet</h3>
+        <div class="names">
+          <span class="name">Timo Lichter</span><span class="name">Daniel Siemsen</span><span class="name">Sebastian Weyts</span><span class="name">Aho Hanno</span><span class="name">Wiebke Kröll</span><span class="name">Kai Seifried</span><span class="name">Simon Brinkmöller</span><span class="name">Michael Bülter</span><span class="name">Sarah Wachholz</span><span class="name">Doreen Kettlitz</span><span class="name">Daniel Hellmann</span><span class="name">Volker Dunker</span><span class="name">Antje-Katrin Grobecker</span><span class="name">Sebastian von Holtum</span><span class="name">Marcel Peters</span><span class="name">Sascha Fischer</span><span class="name">Daniel Gutierrez Blanco</span><span class="name">Sandra Aline Emmerich</span><span class="name">Valentino Ludwig</span><span class="name">Eleni Symeonidou</span><span class="name">Johannes Kuhlmann</span><span class="name">Bartholomäus Prange</span><span class="name">Anas Kombaz</span><span class="name">Stephan Hütter</span><span class="name">Andreas Höschele</span><span class="name">Thorsten Böhm</span><span class="name">Christian Stampfl</span>
+        </div>
+        <div class="note" style="margin-top:12px">Übersprungen (fachfremd): Md Milan Mollah.</div>
+      </div>
+    </div>
+  </details>
+
+  <!-- 31.08 -->
+  <details class="day" open>
+    <summary>
+      <span class="caret">▶</span>
+      <span class="date"><span class="d num">31.08.</span><span class="wd">Sonntag</span></span>
+      <span class="chips">
+        <span class="chip on">🎂 <b>31</b></span>
+      </span>
+      <span class="daytotal num">31<span>Aktionen</span></span>
+    </summary>
+    <div class="body">
+      <div class="block"><h3><span class="bar"></span>Geburtstage · 31 gesendet (2 Runden)</h3>
+        <div class="note">Runde 1 (10): Ralf Schnitzler, Udo Diesmann, Andreas Karnatz, Fabian Uetz, Daniel Würges, Andreas Zeiß, Kai-Uwe Hintersdorf, David Kanzy, Gert Leder, Tobias Rosendahl.</div>
+        <div class="names" style="margin-top:12px">
+          <span class="name">Laurent Corti</span><span class="name">Jörg Schaller</span><span class="name">Dirk Fasold</span><span class="name">Saydar Al-Mandawi</span><span class="name">Marcel Hoepfer</span><span class="name">Frederic Lanz</span><span class="name">Lisa Weimer</span><span class="name">Mirko Simnovec</span><span class="name">Andreas Oliver Goldhahn</span><span class="name">Stefan Haunberger</span><span class="name">Harry Dhillon</span><span class="name">Daniel Mützel</span><span class="name">Mehmet Celik</span><span class="name">Christoph Held</span><span class="name">Karolina Bucewka</span><span class="name">Andreas Hummel</span><span class="name">Maximilian Krüger</span><span class="name">Carsten Brauer</span><span class="name">Lucas Seel</span><span class="name">Felina Morgen</span><span class="name">Rüdiger Fischer</span><span class="name">Sven Fischer</span>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <footer>
+    <span>Vertriebsarchitektur · planbarer Vertrieb, unabhängig von einzelnen Akteuren</span>
+    <span>Zeitraum 31.08.–05.09.2026</span>
+  </footer>
+</div>
