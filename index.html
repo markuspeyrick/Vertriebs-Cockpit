@@ -3,589 +3,641 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap">
 <style>
-  :root{
-    --bg:#FAF8F4;
-    --surface:#FFFFFF;
-    --surface-2:#F3EFE8;
-    --ink:#211E1A;
-    --ink-soft:#5C554C;
-    --ink-faint:#8A8175;
-    --line:#E4DDD1;
-    --line-strong:#D3CABB;
-    --accent:#1F5FBF;
-    --accent-soft:#E9F0FB;
-    --good:#2E7D5B;
-    --good-soft:#E4F0EA;
-    --warn:#C77A2B;
-    --warn-soft:#F7ECDD;
-    --shadow:0 1px 2px rgba(33,30,26,.04),0 8px 24px rgba(33,30,26,.06);
-    --radius:14px;
-  }
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]){
-      --bg:#16140F;
-      --surface:#211E19;
-      --surface-2:#2A261F;
-      --ink:#F3EEE5;
-      --ink-soft:#B8AF9F;
-      --ink-faint:#8B8271;
-      --line:#332E26;
-      --line-strong:#443D32;
-      --accent:#6FA0EC;
-      --accent-soft:#1E2A3E;
-      --good:#5FB98C;
-      --good-soft:#193026;
-      --warn:#E0A45C;
-      --warn-soft:#33271733;
-      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#16140F;
-    --surface:#211E19;
-    --surface-2:#2A261F;
-    --ink:#F3EEE5;
-    --ink-soft:#B8AF9F;
-    --ink-faint:#8B8271;
-    --line:#332E26;
-    --line-strong:#443D32;
-    --accent:#6FA0EC;
-    --accent-soft:#1E2A3E;
-    --good:#5FB98C;
-    --good-soft:#193026;
-    --warn:#E0A45C;
-    --warn-soft:#332717;
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;background:var(--bg);color:var(--ink);
-    font-family:"Instrument Sans",system-ui,sans-serif;
-    line-height:1.55;-webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:1080px;margin:0 auto;padding:48px 24px 80px}
-  .num{font-variant-numeric:tabular-nums}
+:root{
+--bg:#FAF8F4;
+--surface:#FFFFFF;
+--surface-2:#F3EFE8;
+--ink:#211E1A;
+--ink-soft:#5C554C;
+--ink-faint:#8A8175;
+--line:#E4DDD1;
+--line-strong:#D3CABB;
+--accent:#1F5FBF;
+--accent-soft:#E9F0FB;
+--good:#2E7D5B;
+--good-soft:#E4F0EA;
+--warn:#C77A2B;
+--warn-soft:#F7ECDD;
+--shadow:0 1px 2px rgba(33,30,26,.04),0 8px 24px rgba(33,30,26,.06);
+--radius:14px;
+}
+@media (prefers-color-scheme:dark){
+:root:not([data-theme="light"]){
+--bg:#16140F;
+--surface:#211E19;
+--surface-2:#2A261F;
+--ink:#F3EEE5;
+--ink-soft:#B8AF9F;
+--ink-faint:#8B8271;
+--line:#332E26;
+--line-strong:#443D32;
+--accent:#6FA0EC;
+--accent-soft:#1E2A3E;
+--good:#5FB98C;
+--good-soft:#193026;
+--warn:#E0A45C;
+--warn-soft:#33271733;
+--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+}
+}
+:root[data-theme="dark"]{
+--bg:#16140F;
+--surface:#211E19;
+--surface-2:#2A261F;
+--ink:#F3EEE5;
+--ink-soft:#B8AF9F;
+--ink-faint:#8B8271;
+--line:#332E26;
+--line-strong:#443D32;
+--accent:#6FA0EC;
+--accent-soft:#1E2A3E;
+--good:#5FB98C;
+--good-soft:#193026;
+--warn:#E0A45C;
+--warn-soft:#332717;
+--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{
+margin:0;background:var(--bg);color:var(--ink);
+font-family:"Instrument Sans",system-ui,sans-serif;
+line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:48px 24px 80px}
+.num{font-variant-numeric:tabular-nums}
 
-  header.top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:8px}
-  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 10px}
-  h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(30px,5vw,44px);line-height:1.05;margin:0;letter-spacing:-.01em;text-wrap:balance}
-  .sub{color:var(--ink-soft);margin:10px 0 0;font-size:15px;max-width:56ch}
-  .updated{font-size:13px;color:var(--ink-faint);white-space:nowrap}
-  .updated b{color:var(--ink-soft);font-weight:600}
+header.top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:8px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 10px}
+h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(30px,5vw,44px);line-height:1.05;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.sub{color:var(--ink-soft);margin:10px 0 0;font-size:15px;max-width:56ch}
+.updated{font-size:13px;color:var(--ink-faint);white-space:nowrap}
+.updated b{color:var(--ink-soft);font-weight:600}
 
-  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:34px 0 12px}
-  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 16px;box-shadow:var(--shadow)}
-  .kpi .val{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:38px;line-height:1;letter-spacing:-.02em}
-  .kpi .lab{margin-top:8px;font-size:13px;color:var(--ink-soft);font-weight:500}
-  .kpi.total{background:var(--accent);border-color:var(--accent);color:#fff}
-  .kpi.total .lab{color:rgba(255,255,255,.86)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:34px 0 12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 16px;box-shadow:var(--shadow)}
+.kpi .val{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:38px;line-height:1;letter-spacing:-.02em}
+.kpi .lab{margin-top:8px;font-size:13px;color:var(--ink-soft);font-weight:500}
+.kpi.total{background:var(--accent);border-color:var(--accent);color:#fff}
+.kpi.total .lab{color:rgba(255,255,255,.86)}
+.kpi.status{background:var(--surface-2);border-style:dashed}
+.kpi.status .val{color:var(--ink-soft)}
 
-  .legend{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:26px 0 14px;font-size:13px;color:var(--ink-soft)}
-  .legend .dot{display:inline-flex;align-items:center;gap:7px}
-  .legend .swatch{width:10px;height:10px;border-radius:50%}
+.legend{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:26px 0 14px;font-size:13px;color:var(--ink-soft)}
+.legend .dot{display:inline-flex;align-items:center;gap:7px}
+.legend .swatch{width:10px;height:10px;border-radius:50%}
 
-  .day{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:12px;box-shadow:var(--shadow);overflow:hidden}
-  .day[open]{border-color:var(--line-strong)}
-  summary{list-style:none;cursor:pointer;padding:16px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px}
-  summary::-webkit-details-marker{display:none}
-  .caret{color:var(--ink-faint);transition:transform .2s ease;font-size:13px}
-  .day[open] .caret{transform:rotate(90deg)}
-  .date{display:flex;flex-direction:column;min-width:120px}
-  .date .d{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:19px;line-height:1.1}
-  .date .wd{font-size:12px;color:var(--ink-faint);letter-spacing:.04em}
-  .chips{display:flex;gap:8px;flex-wrap:wrap;justify-self:start}
-  .chip{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--surface-2);color:var(--ink-soft);white-space:nowrap}
-  .chip b{font-variant-numeric:tabular-nums}
-  .chip.on{background:var(--accent-soft);color:var(--accent)}
-  .daytotal{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:26px;letter-spacing:-.02em;text-align:right;min-width:40px}
-  .daytotal span{display:block;font-family:"Instrument Sans",sans-serif;font-weight:500;font-size:11px;color:var(--ink-faint);letter-spacing:.04em}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:12px;box-shadow:var(--shadow);overflow:hidden}
+.day[open]{border-color:var(--line-strong)}
+summary{list-style:none;cursor:pointer;padding:16px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px}
+summary::-webkit-details-marker{display:none}
+.caret{color:var(--ink-faint);transition:transform .2s ease;font-size:13px}
+.day[open] .caret{transform:rotate(90deg)}
+.date{display:flex;flex-direction:column;min-width:120px}
+.date .d{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:19px;line-height:1.1}
+.date .wd{font-size:12px;color:var(--ink-faint);letter-spacing:.04em}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-self:start}
+.chip{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--surface-2);color:var(--ink-soft);white-space:nowrap}
+.chip b{font-variant-numeric:tabular-nums}
+.chip.on{background:var(--accent-soft);color:var(--accent)}
+.daytotal{font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:26px;letter-spacing:-.02em;text-align:right;min-width:40px}
+.daytotal span{display:block;font-family:"Instrument Sans",sans-serif;font-weight:500;font-size:11px;color:var(--ink-faint);letter-spacing:.04em}
 
-  .body{padding:4px 20px 22px;border-top:1px solid var(--line);display:grid;gap:18px}
-  .block h3{margin:16px 0 8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;display:flex;align-items:center;gap:9px}
-  .block h3 .bar{width:3px;height:14px;border-radius:2px;background:var(--accent)}
-  .block.good h3 .bar{background:var(--good)}
-  .block.warn h3 .bar{background:var(--warn)}
-  .names{display:flex;flex-wrap:wrap;gap:7px}
-  .name{font-size:13px;padding:4px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink-soft)}
-  .name em{font-style:normal;color:var(--ink-faint);font-size:11.5px}
-  .note{font-size:13.5px;color:var(--ink-soft);background:var(--surface-2);border-radius:10px;padding:11px 14px;line-height:1.5}
-  .note.warn{background:var(--warn-soft)}
-  .note b{color:var(--ink)}
+.body{padding:4px 20px 22px;border-top:1px solid var(--line);display:grid;gap:18px}
+.block h3{margin:16px 0 8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;display:flex;align-items:center;gap:9px}
+.block h3 .bar{width:3px;height:14px;border-radius:2px;background:var(--accent)}
+.block.good h3 .bar{background:var(--good)}
+.block.warn h3 .bar{background:var(--warn)}
+.names{display:flex;flex-wrap:wrap;gap:7px}
+.name{font-size:13px;padding:4px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink-soft)}
+.name em{font-style:normal;color:var(--ink-faint);font-size:11.5px}
+.note{font-size:13.5px;color:var(--ink-soft);background:var(--surface-2);border-radius:10px;padding:11px 14px;line-height:1.5}
+.note.warn{background:var(--warn-soft)}
+.note b{color:var(--ink)}
 
-  footer{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-faint);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  a{color:var(--accent)}
-  @media (max-width:560px){
-    summary{grid-template-columns:auto 1fr;gap:12px}
-    .daytotal{grid-column:2;text-align:left;margin-top:4px}
-    .chips{grid-column:1/-1}
-  }
+footer{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-faint);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+a{color:var(--accent)}
+@media (max-width:560px){
+summary{grid-template-columns:auto 1fr;gap:12px}
+.daytotal{grid-column:2;text-align:left;margin-top:4px}
+.chips{grid-column:1/-1}
+}
 </style>
 
 <div class="wrap">
-  <header class="top">
-    <div>
-      <p class="eyebrow">Die Skalierer Group · LinkedIn</p>
-      <h1>Vertriebs-Cockpit</h1>
-      <p class="sub">Tägliche Netzwerk-Aktivität als Vertriebsarchitekt — Geburtstage, Jobwechsel, Vernetzungen, Kommentare und geführte Gespräche. Klick auf einen Tag zeigt, wer erreicht wurde.</p>
-    </div>
-    <div class="updated">Stand <b>13.09.2026</b></div>
-  </header>
+<header class="top">
+<div>
+<p class="eyebrow">Die Skalierer Group · LinkedIn</p>
+<h1>Vertriebs-Cockpit</h1>
+<p class="sub">Tägliche Netzwerk-Aktivität als Vertriebsarchitekt — Geburtstage, Jobwechsel, Vernetzungen, Kommentare und geführte Gespräche. Klick auf einen Tag zeigt, wer erreicht wurde.</p>
+</div>
+<div class="updated">Stand <b>14.09.2026</b></div>
+</header>
 
-  <section class="kpis" aria-label="Gesamtsummen">
-    <div class="kpi total"><div class="val num">296</div><div class="lab">Aktionen gesamt</div></div>
-    <div class="kpi"><div class="val num">130</div><div class="lab">🎂 Geburtstage</div></div>
-    <div class="kpi"><div class="val num">38</div><div class="lab">🚀 Jobwechsel</div></div>
-    <div class="kpi"><div class="val num">81</div><div class="lab">🤝 Vernetzungen</div></div>
-    <div class="kpi"><div class="val num">19</div><div class="lab">✉️ Willkommen</div></div>
-    <div class="kpi"><div class="val num">9</div><div class="lab">💬 Kommentare</div></div>
-    <div class="kpi"><div class="val num">3</div><div class="lab">👥 Gruppen aktiv</div></div>
-    <div class="kpi"><div class="val num">10</div><div class="lab">📣 Gruppen-Beiträge</div></div>
-    <div class="kpi"><div class="val num">6</div><div class="lab">🎯 Gespräche</div></div>
-  </section>
+<section class="kpis" aria-label="Gesamtsummen">
+<div class="kpi total"><div class="val num">344</div><div class="lab">Aktionen gesamt (= Summe aller Tage)</div></div>
+<div class="kpi"><div class="val num">136</div><div class="lab">🎂 Geburtstage</div></div>
+<div class="kpi"><div class="val num">45</div><div class="lab">🚀 Jobwechsel</div></div>
+<div class="kpi"><div class="val num">110</div><div class="lab">🤝 Vernetzungen</div></div>
+<div class="kpi"><div class="val num">20</div><div class="lab">✉️ Willkommen</div></div>
+<div class="kpi"><div class="val num">11</div><div class="lab">💬 Kommentare</div></div>
+<div class="kpi"><div class="val num">10</div><div class="lab">📣 Gruppen-Beiträge</div></div>
+<div class="kpi"><div class="val num">12</div><div class="lab">🎯 Gespräche</div></div>
+<div class="kpi status"><div class="val num">4</div><div class="lab">👥 Gruppen aktiv (Status, zählt nicht mit)</div></div>
+</section>
 
-  <div class="legend">
-    <span class="dot"><span class="swatch" style="background:var(--accent)"></span>Outreach / Reichweite</span>
-    <span class="dot"><span class="swatch" style="background:var(--good)"></span>Erledigt</span>
-    <span class="dot"><span class="swatch" style="background:var(--warn)"></span>Offen / Nachfassen</span>
-  </div>
+<div class="legend">
+<span class="dot"><span class="swatch" style="background:var(--accent)"></span>Outreach / Reichweite</span>
+<span class="dot"><span class="swatch" style="background:var(--good)"></span>Erledigt</span>
+<span class="dot"><span class="swatch" style="background:var(--warn)"></span>Offen / Nachfassen</span>
+</div>
 
-  <!-- 13.09 -->
-  <details class="day" open>
-    <summary>
-      <span class="caret">▶</span>
-      <span class="date"><span class="d num">13.09.</span><span class="wd">Sonntag</span></span>
-      <span class="chips">
-        <span class="chip on">🎂 <b>5</b></span>
-        <span class="chip on">🚀 <b>1</b></span>
-        <span class="chip on">🎯 <b>1</b></span>
-        <span class="chip">💬 <b>0</b></span>
-      </span>
-      <span class="daytotal num">7<span>Aktionen</span></span>
-    </summary>
-    <div class="body">
-      <div class="block"><h3><span class="bar"></span>Geburtstage · 5 gesendet</h3>
-        <div class="names">
-          <span class="name">Thomas Tappe <em>· Sie, Technischer Leiter Witherm</em></span><span class="name">Tatjana Basener <em>· Du, GF Lindschulte Kaiserslautern</em></span><span class="name">Robert Nemeth <em>· Du, Growth Management Bechtle PLM</em></span><span class="name">Sandra Mayer <em>· Sie, GF Mayer Rolladen</em></span><span class="name">Sieb Guenther <em>· Sie, Selbstständig (kein Vorkontakt)</em></span>
-        </div>
-        <div class="note" style="margin-top:12px">Neue heutige Geburtstage, Du/Sie je Vorkontakt geprüft, Buch-Geschenk „Every Day is Day One". Nachträgliche vom 12.09. bereits erledigt/übersprungen.</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Jobwechsel · 1 gesendet</h3>
-        <div class="names">
-          <span class="name">Tilo Kubach <em>· Du, Key Account Manager Utilities DACH · TE Connectivity</em></span>
-        </div>
-        <div class="note" style="margin-top:12px"><b>Ohne</b> Recruiting-Abspann: Tilo hatte früher (Apr. 2024) die ProHire-Broschüre erhalten und mit „Momentan nicht, Danke" abgesagt → frühere Recruiting-Absage respektiert, nur reine Buch-/Glückwunsch-Geste. Übersprungen: Paul Arbogast (STOP-Liste), Christoph Dierkes (Career Coach). Rest bereits erledigt.</div>
-      </div>
-      <div class="block good"><h3><span class="bar"></span>Reagierer · 1 beantwortet</h3>
-        <div class="names">
-          <span class="name">Carsten Borgmeier <em>· PR-Profi/Verleger · Vernetzungs-Dank in Markus' Namen</em></span>
-        </div>
-        <div class="note" style="margin-top:10px">Auf Wunsch von Markus kurz beantwortet („vielen Dank für die Vernetzung"). Übrige eingehende reine Dankeschöns → warm gelassen (in B2-Timer ab 14.09.). Robert Hinz &amp; Ulrich Zimmermann laut Regel ignoriert. Keine B1-Antworten, kein B2 heute fällig.</div>
-      </div>
-      <div class="block warn"><h3><span class="bar"></span>Vernetzungen · 0 &amp; Kommentare · 0 &amp; Gruppen · 0 &amp; Punkt 8 · 0</h3>
-        <div class="note warn"><b>Vernetzungen:</b> Sonntag (nur Mo/Mi/Fr) + 140 offene Anfragen aus dem Parallel-Automatismus → ausgesetzt. <b>Kommentare:</b> Content-Suche + Feed nur Company-Pages, CRM-/Sales-Tool-Anbieter und 2.-Grad → 0 saubere Zielkunden-Vertriebsposts (Qualität vor Menge). <b>Gruppen-Posts:</b> nur Di &amp; Do → Sonntag keine. <b>Punkt 8:</b> kein 1.-Grad-Kontakt mit eigener offener Vertriebs-/Service-/Technik-Stelle im Feed.</div>
-      </div>
-    </div>
-  </details>
+<!-- 14.09 -->
+<details class="day" open>
+<summary>
+<span class="caret">▶</span>
+<span class="date"><span class="d num">14.09.</span><span class="wd">Montag</span></span>
+<span class="chips">
+<span class="chip on">🎂 <b>8</b></span>
+<span class="chip on">🚀 <b>1</b></span>
+<span class="chip on">✉️ <b>1</b></span>
+<span class="chip on">💬 <b>2</b></span>
+<span class="chip on">🎯 <b>6</b></span>
+</span>
+<span class="daytotal num">18<span>Aktionen</span></span>
+</summary>
+<div class="body">
+<div class="block"><h3><span class="bar"></span>Geburtstage · 8 gesendet</h3>
+<div class="names">
+<span class="name">Paul Dudda <em>· Sie, Buch-Geschenk</em></span><span class="name">Christian Hafner <em>· Sie, +Recruiting-Abspann (Vorkontakt)</em></span><span class="name">Iyad Shamallakh <em>· Sie, General Manager Ritaj</em></span><span class="name">Irfan Haxhiu <em>· Sie, GF KB Spezialbau</em></span><span class="name">Maximilian Bayr <em>· Du, Vorkontakt</em></span><span class="name">Jens Maué <em>· Sie, Prokurist/Einkaufsleitung Dämgen</em></span><span class="name">Karsten Samland <em>· Du, unbeantworteter Vertriebs-Prospect</em></span><span class="name">Paul Walterscheid <em>· Du, Telekom CXC / Telesales</em></span>
+</div>
+<div class="note" style="margin-top:12px">Du/Sie je Vorkontakt geprüft, Buch „Every Day is Day One". Übersprungen (Wettbewerber/fachfremd): <b>Jan Kronenberg</b> (Bewegungscoach), <b>Jonas Kieselbach</b> (IT-Interim-Berater). Die 13.-Sept-Geburtstage waren bereits am 13.09. erledigt.</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Jobwechsel · 1 gesendet</h3>
+<div class="names">
+<span class="name">Sadaf Moussazadeh <em>· Du, Senior Strategic Partner Managerin TKD</em></span>
+</div>
+<div class="note" style="margin-top:12px">Neustart-Buch. Übersprungen <b>Larissa Kaiser</b> (Wettbewerberin – verkauft KI-Vertriebs-Tool „100 Worte"); übrige bereits erledigt oder Coaches/fachfremd.</div>
+</div>
+<div class="block good"><h3><span class="bar"></span>Willkommens-Nachricht · 1 (Erstkontakt nach Vernetzungs-Annahme)</h3>
+<div class="names">
+<span class="name">Ali Duman <em>· Du-Angebot, GF STALVOSS Sondermaschinenbau</em></span>
+</div>
+<div class="note" style="margin-top:12px">Buch als Willkommensgeschenk, Duzen angeboten, kein Pitch. Übersprungen: Rahul Tulsiyani (Dev-Agentur), Daniel Rossi (Marketing-Service), Carsten Borgmeier (PR-Coach).</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Kommentare · 2 (Zielkunden-Vertriebsposts)</h3>
+<div class="names">
+<span class="name">Ulf Minde <em>· Vertriebsdirektion Zurich · Tagungen→planbarer Vertrieb</em></span><span class="name">Christian L. <em>· Abteilungsleiter Vertrieb METRO · Produkterleben→Verkaufssicherheit</em></span>
+</div>
+<div class="note" style="margin-top:12px">Wertorientiert an den Post angedockt, Vertriebsarchitektur-Perspektive, kein Pitch/Link. Übrige Treffer nur Wettbewerber → Qualität vor Menge. Zusätzlich 1 Antwort auf einen Kommentar unter Markus' eigenem Gruppen-Post (Ishak kaya, CRM-Angebot → „Prozess vor Tool" angedockt + Frage zurück).</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Gespräche · 6 Follow-up (B2-Kaskade)</h3>
+<div class="names">
+<span class="name">Benedikt J. Probst <em>· Du</em></span><span class="name">Valentino Ludwig <em>· Du</em></span><span class="name">Rüdiger Fischer <em>· Du, Vertriebs-/Marketingleiter LEO-Kunststoffprofile</em></span><span class="name">Michael Göhler <em>· Du, Recruiting-Variante (ProHire-Kontext)</em></span><span class="name">Salim Deli <em>· Du, Recruiting-Variante (Kiesel Süd)</em></span><span class="name">Gert Leder <em>· Du, AM GEIGER Antriebstechnik</em></span>
+</div>
+<div class="note" style="margin-top:12px">Weiche Buch→Vertriebsarchitektur-Überleitung (bzw. Recruiting-Variante bei ProHire-Kontext), kein Link/Calendly. Weitere fällige B2 bewusst auf den Folgelauf verschoben (kein Nachrichten-Burst = Sperr-Risiko vermeiden).</div>
+</div>
+<div class="block warn"><h3><span class="bar"></span>Vernetzungen · 0 (bewusst ausgesetzt) &amp; Gruppen-Posts · 0 (Mo) &amp; Punkt 8 · 0</h3>
+<div class="note warn"><b>Vernetzungen:</b> Einladungs-Manager zeigt <b>139 offene gesendete Anfragen</b> (der parallele Automatismus läuft weiter) → zusätzliche 30 würden das ~100/Woche-Limit sprengen = Sperr-Risiko. <b>Gruppen-Posts:</b> nur Di &amp; Do → Montag keine. <b>Neue Gruppen-Aufnahme:</b> UIM – Unternehmenskommunikation im Mittelstand jetzt aktiv → 4 aktive Gruppen. <b>Punkt 8:</b> kein 1.-Grad-Kontakt mit eigener offener Vertriebs-/Service-/Technik-Stelle im Feed.</div>
+</div>
+</div>
+</details>
 
-  <!-- 12.09 -->
-  <details class="day">
-    <summary>
-      <span class="caret">▶</span>
-      <span class="date"><span class="d num">12.09.</span><span class="wd">Samstag</span></span>
-      <span class="chips">
-        <span class="chip on">🎂 <b>10</b></span>
-        <span class="chip on">🚀 <b>3</b></span>
-        <span class="chip on">🎯 <b>3</b></span>
-        <span class="chip on">💬 <b>1</b></span>
-      </span>
-      <span class="daytotal num">17<span>Aktionen</span></span>
-    </summary>
-    <div class="body">
-      <div class="block"><h3><span class="bar"></span>Geburtstage · 10 gesendet</h3>
-        <div class="names">
-          <span class="name">Kai Burkhardt <em>· Du, Sales Manager DACH XO CARE (Dental)</em></span><span class="name">Dennis Perndl <em>· Sie, Vertriebsleiter Müller.fire protection</em></span><span class="name">Burak Unver <em>· Du, Hotel/Immobilien Berlin</em></span><span class="name">Michael Kleinlein <em>· Du, Senior Scheme Relationship Mgr Nexi</em></span><span class="name">Michael Münstedt <em>· Du, Inhaber Maklerzentrale Rheinland</em></span><span class="name">Volker Hahn <em>· Du, Manager PINET Industrie</em></span><span class="name">Oliver Tovar <em>· Sie, Director Data &amp; AI Visionet</em></span><span class="name">Andreas Beil <em>· Du, From Operation to Management</em></span><span class="name">Linda Becker <em>· Du, Patronus B2C-Vertrieb</em></span><span class="name">Karl Weiss <em>· Sie, PKV-Experte</em></span>
-        </div>
-        <div class="note" style="margin-top:12px">Du/Sie je Vorkontakt geprüft. Übersprungen als Wettbewerber/fachfremd: <b>Taha Al-Taie</b> (iknowly – Mentoring-Plattform), <b>Bernd Nielsen</b> (Nachfolge-Mentor), <b>Jeenda Sri Ranjan</b> (Transformations-Sparringspartner), <b>Michael Meyer</b> (Umsatzlust – KI-Sales-Tools + Training), <b>Marcus Drabon</b> (Musiker/DJ), <b>Insa Loewe</b> (PR-Agentur).</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Jobwechsel · 3 gesendet</h3>
-        <div class="names">
-          <span class="name">Christian Backes <em>· Sie, Regionaler Verkaufsleiter TIMAC AGRO</em></span><span class="name">Sebastian Reinemann <em>· Du, Head of Sales DACH evosec</em></span><span class="name">Andreas W. Butz <em>· Du, Customer Success nubedian · +Recruiting-Abspann (ProHire-Vorkontakt)</em></span>
-        </div>
-        <div class="note" style="margin-top:12px">Übersprungen: <b>Paul Arbogast</b> (STOP-Liste), <b>Christoph Dierkes</b> (Career Coach), <b>Christian Volkmer</b> (Eishockey-Aufsichtsrat, fachfremd). Bereits erledigt: Eduard Löwen, Martin Bena, Dario Junk, Carola Bopp.</div>
-      </div>
-      <div class="block good"><h3><span class="bar"></span>Follow-up-Kaskade · 3× B1 gesendet (warme Buch-Reagierer)</h3>
-        <div class="names">
-          <span class="name">Gustav Kriese <em>· Du</em></span><span class="name">Andreas Lojewski <em>· Du</em></span><span class="name">Julian Friedrich <em>· Du, GF LEUE &amp; NILL</em></span>
-        </div>
-        <div class="note" style="margin-top:10px">Weiche Buch-Anschlussfrage (B1), kein Pitch, kein Link. <b>Michael Kolodziej</b> („werde lesen" = noch nicht gelesen) → kein B1, B2-Timer ab 17.09. Reagierer sonst reine Dankeschöns → warm gelassen. <b>Sophia Wein</b> (LinkedIn-Sales-Playbook-Funnel = Wettbewerberin) ignoriert.</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Kommentar · 1 (echter Zielkunden-Vertriebspost)</h3>
-        <div class="names">
-          <span class="name">Daniel Rossi <em>· IT-Produkte/E-Commerce · Post: A-Player vs. System</em></span>
-        </div>
-        <div class="note" style="margin-top:10px">Auf seinen Post zum Thema „nicht auf Einzeltalente angewiesen sein" angedockt → Vertriebsarchitektur-Perspektive (klare Prozesse/Übergaben, KI/CRM nur als Werkzeug). Kein Pitch, kein Link, Du-Form. Übrige Treffer heute nur Wettbewerber (Berater/Trainer/Agenturen) → Qualität vor Menge.</div>
-      </div>
-      <div class="block warn"><h3><span class="bar"></span>Vernetzungen · 0 (bewusst ausgesetzt) &amp; Willkommen · 0 &amp; Gruppen · 0</h3>
-        <div class="note warn"><b>Vernetzungen:</b> Einladungs-Manager zeigt <b>140 offene gesendete Anfragen</b> (der parallele Automatismus hat am 10.09. erneut ~17 an GF Maschinenbau/Industrie geschickt). Zusätzliche 30 hätten das LinkedIn-Wochenlimit (~100) klar gesprengt → Sperr-Risiko, daher heute keine. Zudem Samstag (außerhalb Mo/Mi/Fr-Rhythmus). <b>Willkommen:</b> keine neuen angenommenen Vernetzungen seit 09.09. <b>Gruppen-Posts:</b> nur Di &amp; Do → Samstag keine.</div>
-      </div>
-      <div class="block warn"><h3><span class="bar"></span>Punkt 8 (Recruiting-DM) · 0</h3>
-        <div class="note warn">Kein sauberer 1.-Grad-Kontakt mit eigener offener Vertriebs-/Service-/Technik-Stelle gefunden. <b>Salim Deli</b> teilt nur fremde Kiesel-Vakanzen (Payroll/Hotel – kein Role-Fit). Feed/Content-Suche liefern fast nur Personalvermittler. Passus jetzt final verankert (Markus' Fassung 1:1); Sperrfrist-Regel: nach Geschenk-Aktion 2 Tage warten.</div>
-      </div>
-    </div>
-  </details>
+<!-- 13.09 -->
+<details class="day">
+<summary>
+<span class="caret">▶</span>
+<span class="date"><span class="d num">13.09.</span><span class="wd">Sonntag</span></span>
+<span class="chips">
+<span class="chip on">🎂 <b>5</b></span>
+<span class="chip on">🚀 <b>1</b></span>
+<span class="chip on">🎯 <b>1</b></span>
+<span class="chip">💬 <b>0</b></span>
+</span>
+<span class="daytotal num">7<span>Aktionen</span></span>
+</summary>
+<div class="body">
+<div class="block"><h3><span class="bar"></span>Geburtstage · 5 gesendet</h3>
+<div class="names">
+<span class="name">Thomas Tappe <em>· Sie, Technischer Leiter Witherm</em></span><span class="name">Tatjana Basener <em>· Du, GF Lindschulte Kaiserslautern</em></span><span class="name">Robert Nemeth <em>· Du, Growth Management Bechtle PLM</em></span><span class="name">Sandra Mayer <em>· Sie, GF Mayer Rolladen</em></span><span class="name">Sieb Guenther <em>· Sie, Selbstständig (kein Vorkontakt)</em></span>
+</div>
+<div class="note" style="margin-top:12px">Neue heutige Geburtstage, Du/Sie je Vorkontakt geprüft, Buch-Geschenk „Every Day is Day One". Nachträgliche vom 12.09. bereits erledigt/übersprungen.</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Jobwechsel · 1 gesendet</h3>
+<div class="names">
+<span class="name">Tilo Kubach <em>· Du, Key Account Manager Utilities DACH · TE Connectivity</em></span>
+</div>
+<div class="note" style="margin-top:12px"><b>Ohne</b> Recruiting-Abspann: Tilo hatte früher (Apr. 2024) die ProHire-Broschüre erhalten und mit „Momentan nicht, Danke" abgesagt → frühere Recruiting-Absage respektiert, nur reine Buch-/Glückwunsch-Geste. Übersprungen: Paul Arbogast (STOP-Liste), Christoph Dierkes (Career Coach). Rest bereits erledigt.</div>
+</div>
+<div class="block good"><h3><span class="bar"></span>Reagierer · 1 beantwortet</h3>
+<div class="names">
+<span class="name">Carsten Borgmeier <em>· PR-Profi/Verleger · Vernetzungs-Dank in Markus' Namen</em></span>
+</div>
+<div class="note" style="margin-top:10px">Auf Wunsch von Markus kurz beantwortet („vielen Dank für die Vernetzung"). Übrige eingehende reine Dankeschöns → warm gelassen (in B2-Timer ab 14.09.). Robert Hinz &amp; Ulrich Zimmermann laut Regel ignoriert. Keine B1-Antworten, kein B2 heute fällig.</div>
+</div>
+<div class="block warn"><h3><span class="bar"></span>Vernetzungen · 0 &amp; Kommentare · 0 &amp; Gruppen · 0 &amp; Punkt 8 · 0</h3>
+<div class="note warn"><b>Vernetzungen:</b> Sonntag (nur Mo/Mi/Fr) + 140 offene Anfragen aus dem Parallel-Automatismus → ausgesetzt. <b>Kommentare:</b> Content-Suche + Feed nur Company-Pages, CRM-/Sales-Tool-Anbieter und 2.-Grad → 0 saubere Zielkunden-Vertriebsposts (Qualität vor Menge). <b>Gruppen-Posts:</b> nur Di &amp; Do → Sonntag keine. <b>Punkt 8:</b> kein 1.-Grad-Kontakt mit eigener offener Vertriebs-/Service-/Technik-Stelle im Feed.</div>
+</div>
+</div>
+</details>
 
-  <!-- 11.09 -->
-  <details class="day">
-    <summary>
-      <span class="caret">▶</span>
-      <span class="date"><span class="d num">11.09.</span><span class="wd">Freitag</span></span>
-      <span class="chips">
-        <span class="chip on">🎂 <b>9</b></span>
-        <span class="chip on">🎯 <b>1</b></span>
-        <span class="chip">🚀 <b>0</b></span>
-        <span class="chip">💬 <b>0</b></span>
-      </span>
-      <span class="daytotal num">10<span>Aktionen</span></span>
-    </summary>
-    <div class="body">
-      <div class="block"><h3><span class="bar"></span>Geburtstage · 9 gesendet</h3>
-        <div class="names">
-          <span class="name">Joerg Albrecht <em>· Sie, Director Sales eka</em></span><span class="name">Reinhard Schrumpf <em>· Sie, Bau/BIM</em></span><span class="name">Michael Kolodziej <em>· Sie, Sales Director Norican</em></span><span class="name">Richard Pfeifer <em>· Sie, Schmieder Übersetzungen</em></span><span class="name">Julian Oppelt <em>· Sie, Founder/CEO Traderoo</em></span><span class="name">Laura Schöning <em>· Du, adesso</em></span><span class="name">Julian Friedrich <em>· Du, GF LEUE &amp; NILL</em></span><span class="name">Max Gräfe <em>· Sie, GF Gabalo</em></span><span class="name">Virgilio Paladini <em>· Sie, Vertrieb Thuasne</em></span>
-        </div>
-        <div class="note" style="margin-top:12px">Du/Sie je Vorkontakt geprüft. Übersprungen: <b>Sarah König</b> (Webdesign/Marketing = Wettbewerberin), <b>Jan-Dirk Maas</b> (Personalberater), <b>Mandy Weiß</b> (eigenes Team, Die Skalierer Group), <b>Marko Schrön</b> (frühere Absage respektiert — kein erneuter Anlauf).</div>
-      </div>
-      <div class="block good"><h3><span class="bar"></span>Reagierer-Gespräch · 1 (echtes Handlungssignal, beantwortet)</h3>
-        <div class="names">
-          <span class="name">Dario Amadeus Junk <em>· Enterprise SDR, BLP Digital</em></span>
-        </div>
-        <div class="note" style="margin-top:10px">Hat auf die Buch-Anschlussfrage (B1) inhaltlich geantwortet: Adler-Bezug, Buch „Du musst nicht von allen gemocht werden", philosophischer Austausch übers Wachsen. Markus vorgelegt &amp; freigegeben → warme Antwort gesendet (Adler aufgegriffen, weiche Überleitung Vertrieb/Komfortzone, <b>kein Pitch, kein Link</b>). Kaskade beendet, ab jetzt normale Konversation.</div>
-      </div>
-      <div class="block warn"><h3><span class="bar"></span>Weitere Reagierer · warm gelassen</h3>
-        <div class="note warn"><b>Tomasz Kroker</b> („schaue am Wochenende rein" = noch nicht gelesen → B2-Timer, fällig ab 16.09.), <b>Salim Deli</b> &amp; <b>Paul Richter</b> (reine Dankeschöns → warm gehalten). Kein Verkaufsdruck.</div>
-      </div>
-      <div class="block warn"><h3><span class="bar"></span>Jobwechsel · 0 &amp; Kommentare · 0 &amp; Willkommen · 0</h3>
-        <div class="note warn">Jobwechsel: keine neuen passenden offen (Reste nur Coaches/fachfremd). Willkommen: keine neuen angenommenen Vernetzungen seit 09.09. Kommentare: Content-Suche lieferte nur Wettbewerber + Stellenanzeigen → Qualität vor Menge, 0.</div>
-      </div>
-      <div class="block warn"><h3><span class="bar"></span>Vernetzungen · gestoppt (2 Gründe → Markus vorgelegt)</h3>
-        <div class="note warn">(1) Der Einladungs-Dialog reagierte heute technisch unzuverlässig. (2) Wichtiger: Der Einladungs-Manager zeigt, dass <b>gestern bereits viele Vernetzungsanfragen an GF Maschinenbau/Industrie rausgingen — von einem parallelen Automatismus, nicht aus diesem Lauf</b>. Zusätzliche 30 hätten das LinkedIn-Wochenlimit (~100) gesprengt. <b>Gruppen-Posts:</b> neue Regel — nur Dienstag &amp; Donnerstag, daher Freitag keine.</div>
-      </div>
-    </div>
-  </details>
+<!-- 12.09 -->
+<details class="day">
+<summary>
+<span class="caret">▶</span>
+<span class="date"><span class="d num">12.09.</span><span class="wd">Samstag</span></span>
+<span class="chips">
+<span class="chip on">🎂 <b>10</b></span>
+<span class="chip on">🚀 <b>3</b></span>
+<span class="chip on">🎯 <b>3</b></span>
+<span class="chip on">💬 <b>1</b></span>
+</span>
+<span class="daytotal num">17<span>Aktionen</span></span>
+</summary>
+<div class="body">
+<div class="block"><h3><span class="bar"></span>Geburtstage · 10 gesendet</h3>
+<div class="names">
+<span class="name">Kai Burkhardt <em>· Du, Sales Manager DACH XO CARE (Dental)</em></span><span class="name">Dennis Perndl <em>· Sie, Vertriebsleiter Müller.fire protection</em></span><span class="name">Burak Unver <em>· Du, Hotel/Immobilien Berlin</em></span><span class="name">Michael Kleinlein <em>· Du, Senior Scheme Relationship Mgr Nexi</em></span><span class="name">Michael Münstedt <em>· Du, Inhaber Maklerzentrale Rheinland</em></span><span class="name">Volker Hahn <em>· Du, Manager PINET Industrie</em></span><span class="name">Oliver Tovar <em>· Sie, Director Data &amp; AI Visionet</em></span><span class="name">Andreas Beil <em>· Du, From Operation to Management</em></span><span class="name">Linda Becker <em>· Du, Patronus B2C-Vertrieb</em></span><span class="name">Karl Weiss <em>· Sie, PKV-Experte</em></span>
+</div>
+<div class="note" style="margin-top:12px">Du/Sie je Vorkontakt geprüft. Übersprungen als Wettbewerber/fachfremd: <b>Taha Al-Taie</b> (iknowly – Mentoring-Plattform), <b>Bernd Nielsen</b> (Nachfolge-Mentor), <b>Jeenda Sri Ranjan</b> (Transformations-Sparringspartner), <b>Michael Meyer</b> (Umsatzlust – KI-Sales-Tools + Training), <b>Marcus Drabon</b> (Musiker/DJ), <b>Insa Loewe</b> (PR-Agentur).</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Jobwechsel · 3 gesendet</h3>
+<div class="names">
+<span class="name">Christian Backes <em>· Sie, Regionaler Verkaufsleiter TIMAC AGRO</em></span><span class="name">Sebastian Reinemann <em>· Du, Head of Sales DACH evosec</em></span><span class="name">Andreas W. Butz <em>· Du, Customer Success nubedian · +Recruiting-Abspann (ProHire-Vorkontakt)</em></span>
+</div>
+<div class="note" style="margin-top:12px">Übersprungen: <b>Paul Arbogast</b> (STOP-Liste), <b>Christoph Dierkes</b> (Career Coach), <b>Christian Volkmer</b> (Eishockey-Aufsichtsrat, fachfremd). Bereits erledigt: Eduard Löwen, Martin Bena, Dario Junk, Carola Bopp.</div>
+</div>
+<div class="block good"><h3><span class="bar"></span>Follow-up-Kaskade · 3× B1 gesendet (warme Buch-Reagierer)</h3>
+<div class="names">
+<span class="name">Gustav Kriese <em>· Du</em></span><span class="name">Andreas Lojewski <em>· Du</em></span><span class="name">Julian Friedrich <em>· Du, GF LEUE &amp; NILL</em></span>
+</div>
+<div class="note" style="margin-top:10px">Weiche Buch-Anschlussfrage (B1), kein Pitch, kein Link. <b>Michael Kolodziej</b> („werde lesen" = noch nicht gelesen) → kein B1, B2-Timer ab 17.09. Reagierer sonst reine Dankeschöns → warm gelassen. <b>Sophia Wein</b> (LinkedIn-Sales-Playbook-Funnel = Wettbewerberin) ignoriert.</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Kommentar · 1 (echter Zielkunden-Vertriebspost)</h3>
+<div class="names">
+<span class="name">Daniel Rossi <em>· IT-Produkte/E-Commerce · Post: A-Player vs. System</em></span>
+</div>
+<div class="note" style="margin-top:10px">Auf seinen Post zum Thema „nicht auf Einzeltalente angewiesen sein" angedockt → Vertriebsarchitektur-Perspektive (klare Prozesse/Übergaben, KI/CRM nur als Werkzeug). Kein Pitch, kein Link, Du-Form. Übrige Treffer heute nur Wettbewerber (Berater/Trainer/Agenturen) → Qualität vor Menge.</div>
+</div>
+<div class="block warn"><h3><span class="bar"></span>Vernetzungen · 0 (bewusst ausgesetzt) &amp; Willkommen · 0 &amp; Gruppen · 0</h3>
+<div class="note warn"><b>Vernetzungen:</b> Einladungs-Manager zeigt <b>140 offene gesendete Anfragen</b> (der parallele Automatismus hat am 10.09. erneut ~17 an GF Maschinenbau/Industrie geschickt). Zusätzliche 30 hätten das LinkedIn-Wochenlimit (~100) klar gesprengt → Sperr-Risiko, daher heute keine. Zudem Samstag (außerhalb Mo/Mi/Fr-Rhythmus). <b>Willkommen:</b> keine neuen angenommenen Vernetzungen seit 09.09. <b>Gruppen-Posts:</b> nur Di &amp; Do → Samstag keine.</div>
+</div>
+<div class="block warn"><h3><span class="bar"></span>Punkt 8 (Recruiting-DM) · 0</h3>
+<div class="note warn">Kein sauberer 1.-Grad-Kontakt mit eigener offener Vertriebs-/Service-/Technik-Stelle gefunden. <b>Salim Deli</b> teilt nur fremde Kiesel-Vakanzen (Payroll/Hotel – kein Role-Fit). Feed/Content-Suche liefern fast nur Personalvermittler. Passus jetzt final verankert (Markus' Fassung 1:1); Sperrfrist-Regel: nach Geschenk-Aktion 2 Tage warten.</div>
+</div>
+</div>
+</details>
 
-  <!-- 10.09 -->
-  <details class="day">
-    <summary>
-      <span class="caret">▶</span>
-      <span class="date"><span class="d num">10.09.</span><span class="wd">Donnerstag</span></span>
-      <span class="chips">
-        <span class="chip on">🎂 <b>9</b></span>
-        <span class="chip on">✉️ <b>4</b></span>
-        <span class="chip on">📣 <b>3</b></span>
-        <span class="chip">💬 <b>0</b></span>
-      </span>
-      <span class="daytotal num">16<span>Aktionen</span></span>
-    </summary>
-    <div class="body">
-      <div class="block"><h3><span class="bar"></span>Geburtstage · 9 gesendet</h3>
-        <div class="names">
-          <span class="name">Volker Stoetzel <em>· Sie, SVT GmbH</em></span><span class="name">Thomas Mitroulis <em>· Sie, CEO AXIA Asset Mgmt</em></span><span class="name">Nawid Shalizi <em>· Sie, GF Centriair</em></span><span class="name">Frank Nickel <em>· Sie, Regionalleiter ULMA</em></span><span class="name">Paul Richter <em>· Du, GF LEGION Versicherungsmakler</em></span><span class="name">Salim Deli <em>· Du, +Recruiting-Abspann, Kiesel</em></span><span class="name">Ole Kielhorn <em>· Du, GF Polytherm</em></span><span class="name">Oliver Papok <em>· Du, Judith Gruppe</em></span><span class="name">Florian Knötsch <em>· Sie, +Recruiting-Abspann, Europcar</em></span>
-        </div>
-        <div class="note" style="margin-top:12px">Du/Sie je Vorkontakt geprüft; Recruiting-Abspann bei bestehenden ProHire-Kontakten (Salim, Florian). Übersprungen (Wettbewerber/Kontext): <b>Esra Dourin</b> (Bestseller Verlag), <b>David Mederake</b> (Leadgen), <b>Nicole Jordan</b> (Coach), <b>Nicole Ebert</b> (Webdesign).</div>
-      </div>
-      <div class="block good"><h3><span class="bar"></span>Willkommens-Nachrichten · 4 (Erstkontakt nach Vernetzungs-Annahme)</h3>
-        <div class="names">
-          <span class="name">Markus Ferenz <em>· GF Allgäuer Elektrohaus (Sweet-Spot)</em></span><span class="name">Hubert Vienken <em>· GF Energiegewinner Technik</em></span><span class="name">André Bubolz <em>· Vertriebsleiter Getriebebau NORD</em></span><span class="name">Christopher Ukatz <em>· GF/CEO Industrieautomation</em></span>
-        </div>
-        <div class="note" style="margin-top:12px">Alle echte ICP-Zielkunden. Übersprungen: Srdjan Lazic (EY-Beratung), Noel Meyer/Cornelia Droege (Berater/Mediatorin), Marc Bieling (bereits begrüßt).</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Gruppen-Posts · 3 (je 1 pro aktive Gruppe, zur Freigabe eingereicht)</h3>
-        <div class="note">Neue Mehrwert-Texte: Digitalisierung im Vertrieb (CRM braucht Architektur), Unternehmerwelt (Vertrieb unabhängig vom Chef/Skalierung), Rubikon-Leadership (führbarer Vertrieb statt Einzelabhängigkeit). Alle drei bei Gruppen-Admin zur Genehmigung.</div>
-      </div>
-      <div class="block warn"><h3><span class="bar"></span>Jobwechsel · 0 &amp; Kommentare · 0</h3>
-        <div class="note warn">Jobwechsel: alle passenden erledigt, offene Einträge nur Coaches/fachfremd (Dierkes, Ergashova, Rückle, Güler, Peters). Kommentare: heute nur Wettbewerber/Firmenwerbung/Dirk-Kreuter-nahe Treffer → Qualität vor Menge, 0. Vernetzungen: Donnerstag → planmäßig ausgesetzt (Mo/Mi/Fr).</div>
-      </div>
-    </div>
-  </details>
+<!-- 11.09 -->
+<details class="day">
+<summary>
+<span class="caret">▶</span>
+<span class="date"><span class="d num">11.09.</span><span class="wd">Freitag</span></span>
+<span class="chips">
+<span class="chip on">🎂 <b>9</b></span>
+<span class="chip on">🎯 <b>1</b></span>
+<span class="chip">🚀 <b>0</b></span>
+<span class="chip">💬 <b>0</b></span>
+</span>
+<span class="daytotal num">10<span>Aktionen</span></span>
+</summary>
+<div class="body">
+<div class="block"><h3><span class="bar"></span>Geburtstage · 9 gesendet</h3>
+<div class="names">
+<span class="name">Joerg Albrecht <em>· Sie, Director Sales eka</em></span><span class="name">Reinhard Schrumpf <em>· Sie, Bau/BIM</em></span><span class="name">Michael Kolodziej <em>· Sie, Sales Director Norican</em></span><span class="name">Richard Pfeifer <em>· Sie, Schmieder Übersetzungen</em></span><span class="name">Julian Oppelt <em>· Sie, Founder/CEO Traderoo</em></span><span class="name">Laura Schöning <em>· Du, adesso</em></span><span class="name">Julian Friedrich <em>· Du, GF LEUE &amp; NILL</em></span><span class="name">Max Gräfe <em>· Sie, GF Gabalo</em></span><span class="name">Virgilio Paladini <em>· Sie, Vertrieb Thuasne</em></span>
+</div>
+<div class="note" style="margin-top:12px">Du/Sie je Vorkontakt geprüft. Übersprungen: <b>Sarah König</b> (Webdesign/Marketing = Wettbewerberin), <b>Jan-Dirk Maas</b> (Personalberater), <b>Mandy Weiß</b> (eigenes Team, Die Skalierer Group), <b>Marko Schrön</b> (frühere Absage respektiert — kein erneuter Anlauf).</div>
+</div>
+<div class="block good"><h3><span class="bar"></span>Reagierer-Gespräch · 1 (echtes Handlungssignal, beantwortet)</h3>
+<div class="names">
+<span class="name">Dario Amadeus Junk <em>· Enterprise SDR, BLP Digital</em></span>
+</div>
+<div class="note" style="margin-top:10px">Hat auf die Buch-Anschlussfrage (B1) inhaltlich geantwortet: Adler-Bezug, Buch „Du musst nicht von allen gemocht werden", philosophischer Austausch übers Wachsen. Markus vorgelegt &amp; freigegeben → warme Antwort gesendet (Adler aufgegriffen, weiche Überleitung Vertrieb/Komfortzone, <b>kein Pitch, kein Link</b>). Kaskade beendet, ab jetzt normale Konversation.</div>
+</div>
+<div class="block warn"><h3><span class="bar"></span>Weitere Reagierer · warm gelassen</h3>
+<div class="note warn"><b>Tomasz Kroker</b> („schaue am Wochenende rein" = noch nicht gelesen → B2-Timer, fällig ab 16.09.), <b>Salim Deli</b> &amp; <b>Paul Richter</b> (reine Dankeschöns → warm gehalten). Kein Verkaufsdruck.</div>
+</div>
+<div class="block warn"><h3><span class="bar"></span>Jobwechsel · 0 &amp; Kommentare · 0 &amp; Willkommen · 0</h3>
+<div class="note warn">Jobwechsel: keine neuen passenden offen (Reste nur Coaches/fachfremd). Willkommen: keine neuen angenommenen Vernetzungen seit 09.09. Kommentare: Content-Suche lieferte nur Wettbewerber + Stellenanzeigen → Qualität vor Menge, 0.</div>
+</div>
+<div class="block warn"><h3><span class="bar"></span>Vernetzungen · gestoppt (2 Gründe → Markus vorgelegt)</h3>
+<div class="note warn">(1) Der Einladungs-Dialog reagierte heute technisch unzuverlässig. (2) Wichtiger: Der Einladungs-Manager zeigt, dass <b>gestern bereits viele Vernetzungsanfragen an GF Maschinenbau/Industrie rausgingen — von einem parallelen Automatismus, nicht aus diesem Lauf</b>. Zusätzliche 30 hätten das LinkedIn-Wochenlimit (~100) gesprengt. <b>Gruppen-Posts:</b> neue Regel — nur Dienstag &amp; Donnerstag, daher Freitag keine.</div>
+</div>
+</div>
+</details>
 
-  <!-- 09.09 -->
-  <details class="day">
-    <summary>
-      <span class="caret">▶</span>
-      <span class="date"><span class="d num">09.09.</span><span class="wd">Mittwoch</span></span>
-      <span class="chips">
-        <span class="chip on">🎂 <b>11</b></span>
-        <span class="chip on">🚀 <b>3</b></span>
-        <span class="chip on">🤝 <b>23</b></span>
-        <span class="chip on">💬 <b>1</b></span>
-        <span class="chip on">📣 <b>3</b></span>
-      </span>
-      <span class="daytotal num">41<span>Aktionen</span></span>
-    </summary>
-    <div class="body">
-      <div class="block good"><h3><span class="bar"></span>Vernetzungen · 23 gesendet (ohne Notiz)</h3>
-        <div class="note">Sweet-Spot Industrie/Maschinenbau GF/Inhaber/Vertriebsleiter DACH — u.a. Georg Geier (Siempelkamp Giesserei), Jens Hinrichs (Ideal Tridon), Olaf Lingnau (Blumenbecker), Wilhelm Mauss (Lorenz), Berthold Lullies (BELU Automation), Matthias Risch (Globus Gummiwerke), Markus Kloke (E.Winkemann), Christopher Ukatz, André Bubolz (TKD Kabel), Jochen Schlamelcher (RUD+SpanSet), Dirk Jürgeleit (KAISER), Henning Wagner, Nicolas David, Roland Kuehnel, Matthias Götz (WIEGEL), Ralf Großhauser (VOLLMER), u.a. <b>Ziel 30 nicht erreicht</b> — sehr viele Berater/Coaches/Agenturen/Recruiter in den Treffern, strikt aussortiert (sauberer Pool erschöpft).</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Geburtstage · 11 gesendet</h3>
-        <div class="names">
-          <span class="name">Franziska Jentzsch <em>· Du</em></span><span class="name">Jonas Lange <em>· Du</em></span><span class="name">Christoph Ishorst <em>· Du</em></span><span class="name">Andreas Kolb <em>· Sie</em></span><span class="name">Angela Denk <em>· Du</em></span><span class="name">Reiner Habermann <em>· Du, ohne Vertriebsbezug</em></span><span class="name">Peter Klima <em>· Du</em></span><span class="name">Marc Boden <em>· Du</em></span><span class="name">Nicolaus Deutschbauer <em>· Sie</em></span><span class="name">Alfred Neudorfer <em>· Du</em></span><span class="name">Michael Göhler <em>· Du, +Recruiting-Abspann</em></span>
-        </div>
-        <div class="note" style="margin-top:12px">Übersprungen (Wettbewerber): <b>Katharina Engler</b> (Seminare/Trainings), <b>Peter Xie</b>, <b>Oliver Rückle</b> (SalesCraft). Reiner Habermann bewusst ohne Vertriebsbezug (frühere Absage respektiert).</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Jobwechsel · 3 gesendet</h3>
-        <div class="names">
-          <span class="name">Martin Bena <em>· Senior Sales, SMCW</em></span><span class="name">Eduard Löwen <em>· Vorstand, Gemeindeversorger</em></span><span class="name">Dario Amadeus Junk <em>· Enterprise SDR, BLP</em></span>
-        </div>
-        <div class="note" style="margin-top:12px">Übersprungen: Christoph Dierkes/Narghiza Ergashova/Oliver Rückle (Coaches/Wettbewerber), Tuncay Güler/Britta Peters (fachfremd).</div>
-      </div>
-      <div class="block good"><h3><span class="bar"></span>Willkommens-Nachrichten · 0 neue Zielkunden offen</h3>
-        <div class="note">Marc Bieling &amp; Peter Bertling bereits begrüßt. <b>Srdjan Lazic</b> (Partner EY) neu vernetzt, aber als Beratungs-/Nicht-ICP-Profil übersprungen — bei Bedarf Rückmeldung an Markus.</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Kommentar · 1 (komplementärer Zielkunde)</h3>
-        <div class="names">
-          <span class="name">Lucas Pedretti <em>· CEO Qymatix</em></span>
-        </div>
-        <div class="note" style="margin-top:10px">Post „1 % Preisfehler = 20 % Gewinnverlust" (Margenerosion/Preisdisziplin Großhandel) → Kommentar zu Systematik vs. Einzelentscheidung, Steuerbarkeit vs. Bauchgefühl. Weitere Kommentare per Qualität-vor-Menge auf Folgetag (heute nur Wettbewerber/Unternehmensseiten verfügbar).</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Gruppen-Posts · 3 (je 1 pro aktive Gruppe, freigeschaltet)</h3>
-        <div class="note">Neue Mehrwert-Texte in Führung im Mittelstand, Digitalisierung im Vertrieb Mittelstand &amp; Unternehmerwelt. 4 ausstehende Gruppen-Anfragen unverändert (keine neue Aufnahme).</div>
-      </div>
-      <div class="block warn"><h3><span class="bar"></span>Reagierer</h3>
-        <div class="note warn"><b>Michael Göhler</b>: „Vielen Dank, Markus" = reines Dankeschön auf Geschenk-Nachricht → warm gelassen, kein Vertriebs-Zug. Keine neuen Handlungssignale im Postfach.</div>
-      </div>
-    </div>
-  </details>
+<!-- 10.09 -->
+<details class="day">
+<summary>
+<span class="caret">▶</span>
+<span class="date"><span class="d num">10.09.</span><span class="wd">Donnerstag</span></span>
+<span class="chips">
+<span class="chip on">🎂 <b>9</b></span>
+<span class="chip on">✉️ <b>4</b></span>
+<span class="chip on">📣 <b>3</b></span>
+<span class="chip">💬 <b>0</b></span>
+</span>
+<span class="daytotal num">16<span>Aktionen</span></span>
+</summary>
+<div class="body">
+<div class="block"><h3><span class="bar"></span>Geburtstage · 9 gesendet</h3>
+<div class="names">
+<span class="name">Volker Stoetzel <em>· Sie, SVT GmbH</em></span><span class="name">Thomas Mitroulis <em>· Sie, CEO AXIA Asset Mgmt</em></span><span class="name">Nawid Shalizi <em>· Sie, GF Centriair</em></span><span class="name">Frank Nickel <em>· Sie, Regionalleiter ULMA</em></span><span class="name">Paul Richter <em>· Du, GF LEGION Versicherungsmakler</em></span><span class="name">Salim Deli <em>· Du, +Recruiting-Abspann, Kiesel</em></span><span class="name">Ole Kielhorn <em>· Du, GF Polytherm</em></span><span class="name">Oliver Papok <em>· Du, Judith Gruppe</em></span><span class="name">Florian Knötsch <em>· Sie, +Recruiting-Abspann, Europcar</em></span>
+</div>
+<div class="note" style="margin-top:12px">Du/Sie je Vorkontakt geprüft; Recruiting-Abspann bei bestehenden ProHire-Kontakten (Salim, Florian). Übersprungen (Wettbewerber/Kontext): <b>Esra Dourin</b> (Bestseller Verlag), <b>David Mederake</b> (Leadgen), <b>Nicole Jordan</b> (Coach), <b>Nicole Ebert</b> (Webdesign).</div>
+</div>
+<div class="block good"><h3><span class="bar"></span>Willkommens-Nachrichten · 4 (Erstkontakt nach Vernetzungs-Annahme)</h3>
+<div class="names">
+<span class="name">Markus Ferenz <em>· GF Allgäuer Elektrohaus (Sweet-Spot)</em></span><span class="name">Hubert Vienken <em>· GF Energiegewinner Technik</em></span><span class="name">André Bubolz <em>· Vertriebsleiter Getriebebau NORD</em></span><span class="name">Christopher Ukatz <em>· GF/CEO Industrieautomation</em></span>
+</div>
+<div class="note" style="margin-top:12px">Alle echte ICP-Zielkunden. Übersprungen: Srdjan Lazic (EY-Beratung), Noel Meyer/Cornelia Droege (Berater/Mediatorin), Marc Bieling (bereits begrüßt).</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Gruppen-Posts · 3 (je 1 pro aktive Gruppe, zur Freigabe eingereicht)</h3>
+<div class="note">Neue Mehrwert-Texte: Digitalisierung im Vertrieb (CRM braucht Architektur), Unternehmerwelt (Vertrieb unabhängig vom Chef/Skalierung), Rubikon-Leadership (führbarer Vertrieb statt Einzelabhängigkeit). Alle drei bei Gruppen-Admin zur Genehmigung.</div>
+</div>
+<div class="block warn"><h3><span class="bar"></span>Jobwechsel · 0 &amp; Kommentare · 0</h3>
+<div class="note warn">Jobwechsel: alle passenden erledigt, offene Einträge nur Coaches/fachfremd (Dierkes, Ergashova, Rückle, Güler, Peters). Kommentare: heute nur Wettbewerber/Firmenwerbung/Dirk-Kreuter-nahe Treffer → Qualität vor Menge, 0. Vernetzungen: Donnerstag → planmäßig ausgesetzt (Mo/Mi/Fr).</div>
+</div>
+</div>
+</details>
 
-  <!-- 08.09 -->
-  <details class="day">
-    <summary>
-      <span class="caret">▶</span>
-      <span class="date"><span class="d num">08.09.</span><span class="wd">Dienstag</span></span>
-      <span class="chips">
-        <span class="chip on">🎂 <b>5</b></span>
-        <span class="chip on">✉️ <b>2</b></span>
-        <span class="chip">💬 <b>0</b></span>
-        <span class="chip">📣 <b>0</b></span>
-      </span>
-      <span class="daytotal num">7<span>Aktionen</span></span>
-    </summary>
-    <div class="body">
-      <div class="block"><h3><span class="bar"></span>Geburtstage · 5 gesendet</h3>
-        <div class="names">
-          <span class="name">Alexander Scholz <em>· Sie, Head of Sales CAD/CAM</em></span><span class="name">Thomas Schwarze <em>· Du</em></span><span class="name">Gustav Kriese <em>· Du, Director Operational Technology</em></span><span class="name">Andreas Lojewski <em>· Du</em></span><span class="name">Krohn Rosemarie <em>· Du</em></span>
-        </div>
-        <div class="note" style="margin-top:12px">Übersprungen: <b>Katharina Engler</b> (WEIDA:KEMMA – Seminare/Trainings = Wettbewerberin), <b>Peter Xie</b> (international/fachfremd). Neue Regel ab heute: Wettbewerber auch bei Geburtstagen überspringen.</div>
-      </div>
-      <div class="block good"><h3><span class="bar"></span>Willkommens-Nachrichten · 2 (Erstkontakt nach Vernetzungs-Annahme)</h3>
-        <div class="names">
-          <span class="name">Sascha Maas <em>· GF Hansa-Papier Großhandel (Sweet-Spot)</em></span><span class="name">Marc Bieling <em>· Sicherheitslösungen</em></span>
-        </div>
-        <div class="note" style="margin-top:12px">Übersprungen (Wettbewerber): Noel Meyer, Cornelia Droege, Parsa Sajadi. Restliche Neuzugänge bereits am 07.09. begrüßt.</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Jobwechsel · 0 passende offen</h3>
-        <div class="note">Alle Zielkunden bereits erledigt. Offene Einträge waren Wettbewerber/fachfremd: Christoph Dierkes (Karriereberatung), Dario Junk (SDR), Narghiza Ergashova (Coach/international), Oliver Rückle (SalesCraft).</div>
-      </div>
-      <div class="block warn"><h3><span class="bar"></span>Reagierer · Postfach systematisch geprüft (~18 ungelesene aufgearbeitet)</h3>
-        <div class="note warn">Kernbefund: liegengebliebene Reaktionen seit 24.–27.08. — fast alle Höflichkeits-Dankeschöns (warm gehalten). <b>Zwei Ausnahmen:</b> <b>Ulrich Zimmermann</b> (inhaltliche Rückfrage — auf Markus' Wunsch ignoriert) und <b>Martin Stockburger</b> (GF Koncept Hotels, „Nein Danke“ = Opt-out → auf STOP-Liste gesetzt).</div>
-      </div>
-      <div class="block warn"><h3><span class="bar"></span>Kommentare · 0 &amp; Gruppen-Posts · offen (technisch blockiert)</h3>
-        <div class="note warn">Kommentare: Content-Suchen lieferten heute nur Wettbewerber/Agenturen/Unternehmensseiten — kein sauberer Zielkunden-Post (Qualität vor Menge). Gruppen-Posts + Kommentieren erfordern den Browser-Eingabe-Kanal, der heute wiederholt ausfiel; sobald stabil, nachziehen. Vernetzungen (Neuanfragen): Dienstag → planmäßig ausgesetzt (Mo/Mi/Fr).</div>
-      </div>
-    </div>
-  </details>
+<!-- 09.09 -->
+<details class="day">
+<summary>
+<span class="caret">▶</span>
+<span class="date"><span class="d num">09.09.</span><span class="wd">Mittwoch</span></span>
+<span class="chips">
+<span class="chip on">🎂 <b>11</b></span>
+<span class="chip on">🚀 <b>3</b></span>
+<span class="chip on">🤝 <b>23</b></span>
+<span class="chip on">💬 <b>1</b></span>
+<span class="chip on">📣 <b>3</b></span>
+</span>
+<span class="daytotal num">41<span>Aktionen</span></span>
+</summary>
+<div class="body">
+<div class="block good"><h3><span class="bar"></span>Vernetzungen · 23 gesendet (ohne Notiz)</h3>
+<div class="note">Sweet-Spot Industrie/Maschinenbau GF/Inhaber/Vertriebsleiter DACH — u.a. Georg Geier (Siempelkamp Giesserei), Jens Hinrichs (Ideal Tridon), Olaf Lingnau (Blumenbecker), Wilhelm Mauss (Lorenz), Berthold Lullies (BELU Automation), Matthias Risch (Globus Gummiwerke), Markus Kloke (E.Winkemann), Christopher Ukatz, André Bubolz (TKD Kabel), Jochen Schlamelcher (RUD+SpanSet), Dirk Jürgeleit (KAISER), Henning Wagner, Nicolas David, Roland Kuehnel, Matthias Götz (WIEGEL), Ralf Großhauser (VOLLMER), u.a. <b>Ziel 30 nicht erreicht</b> — sehr viele Berater/Coaches/Agenturen/Recruiter in den Treffern, strikt aussortiert (sauberer Pool erschöpft).</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Geburtstage · 11 gesendet</h3>
+<div class="names">
+<span class="name">Franziska Jentzsch <em>· Du</em></span><span class="name">Jonas Lange <em>· Du</em></span><span class="name">Christoph Ishorst <em>· Du</em></span><span class="name">Andreas Kolb <em>· Sie</em></span><span class="name">Angela Denk <em>· Du</em></span><span class="name">Reiner Habermann <em>· Du, ohne Vertriebsbezug</em></span><span class="name">Peter Klima <em>· Du</em></span><span class="name">Marc Boden <em>· Du</em></span><span class="name">Nicolaus Deutschbauer <em>· Sie</em></span><span class="name">Alfred Neudorfer <em>· Du</em></span><span class="name">Michael Göhler <em>· Du, +Recruiting-Abspann</em></span>
+</div>
+<div class="note" style="margin-top:12px">Übersprungen (Wettbewerber): <b>Katharina Engler</b> (Seminare/Trainings), <b>Peter Xie</b>, <b>Oliver Rückle</b> (SalesCraft). Reiner Habermann bewusst ohne Vertriebsbezug (frühere Absage respektiert).</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Jobwechsel · 3 gesendet</h3>
+<div class="names">
+<span class="name">Martin Bena <em>· Senior Sales, SMCW</em></span><span class="name">Eduard Löwen <em>· Vorstand, Gemeindeversorger</em></span><span class="name">Dario Amadeus Junk <em>· Enterprise SDR, BLP</em></span>
+</div>
+<div class="note" style="margin-top:12px">Übersprungen: Christoph Dierkes/Narghiza Ergashova/Oliver Rückle (Coaches/Wettbewerber), Tuncay Güler/Britta Peters (fachfremd).</div>
+</div>
+<div class="block good"><h3><span class="bar"></span>Willkommens-Nachrichten · 0 neue Zielkunden offen</h3>
+<div class="note">Marc Bieling &amp; Peter Bertling bereits begrüßt. <b>Srdjan Lazic</b> (Partner EY) neu vernetzt, aber als Beratungs-/Nicht-ICP-Profil übersprungen — bei Bedarf Rückmeldung an Markus.</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Kommentar · 1 (komplementärer Zielkunde)</h3>
+<div class="names">
+<span class="name">Lucas Pedretti <em>· CEO Qymatix</em></span>
+</div>
+<div class="note" style="margin-top:10px">Post „1 % Preisfehler = 20 % Gewinnverlust" (Margenerosion/Preisdisziplin Großhandel) → Kommentar zu Systematik vs. Einzelentscheidung, Steuerbarkeit vs. Bauchgefühl. Weitere Kommentare per Qualität-vor-Menge auf Folgetag (heute nur Wettbewerber/Unternehmensseiten verfügbar).</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Gruppen-Posts · 3 (je 1 pro aktive Gruppe, freigeschaltet)</h3>
+<div class="note">Neue Mehrwert-Texte in Führung im Mittelstand, Digitalisierung im Vertrieb Mittelstand &amp; Unternehmerwelt. 4 ausstehende Gruppen-Anfragen unverändert (keine neue Aufnahme).</div>
+</div>
+<div class="block warn"><h3><span class="bar"></span>Reagierer</h3>
+<div class="note warn"><b>Michael Göhler</b>: „Vielen Dank, Markus" = reines Dankeschön auf Geschenk-Nachricht → warm gelassen, kein Vertriebs-Zug. Keine neuen Handlungssignale im Postfach.</div>
+</div>
+</div>
+</details>
 
-  <!-- 07.09 -->
-  <details class="day">
-    <summary>
-      <span class="caret">▶</span>
-      <span class="date"><span class="d num">07.09.</span><span class="wd">Montag</span></span>
-      <span class="chips">
-        <span class="chip on">🎂 <b>8</b></span>
-        <span class="chip on">🚀 <b>2</b></span>
-        <span class="chip on">🤝 <b>28</b></span>
-        <span class="chip on">✉️ <b>13</b></span>
-        <span class="chip on">💬 <b>3</b></span>
-        <span class="chip on">📣 <b>2</b></span>
-      </span>
-      <span class="daytotal num">56<span>Aktionen</span></span>
-    </summary>
-    <div class="body">
-      <div class="block good"><h3><span class="bar"></span>Vernetzungen · 28 gesendet</h3>
-        <div class="note">GF/Inhaber Mittelstand DACH (ohne Notiz, Sweet-Spot Großhandel/Industrie/Beratung) — u.a. Christoph Reyelt, Marcel Bonnet (MIT BW), Dr. Michel Becker (Mittelstand.ai), Peter Bertling (Bidirex), Matthias König, Lorenz Surkemper, Markus Helms, Michael Schröder (Henrich Baustoffzentrum), Sebastian Mähler, Mart Kivikas, Kevin Tybus, Thomas Ehret, Daniel Kalczynski, Jens Woyde. <b>Bei 28 hat LinkedIn gedrosselt</b> — 2 fehlende am Mittwoch mit auf.</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Geburtstage · 8</h3>
-        <div class="names">
-          <span class="name">Marcel Berg <em>· Sie</em></span><span class="name">Gordon Schumacher <em>· Du</em></span><span class="name">Sven Dabelstein <em>· Du</em></span><span class="name">Johannes Kuhlmann <em>· Du, Buch vorhanden</em></span><span class="name">Tobias Lapper <em>· Sie</em></span><span class="name">Diane-Veronika v. Rautenberg <em>· Du</em></span><span class="name">Christian Volkmer <em>· Du</em></span><span class="name">Nils Gessner <em>· Sie</em></span>
-        </div>
-        <div class="note" style="margin-top:12px">Übersprungen: Oliver Rückle (SalesCraft = Wettbewerber).</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Jobwechsel · 2</h3>
-        <div class="names">
-          <span class="name">Carola Bopp <em>· Head of Sales, OneCareer</em></span><span class="name">Sven Freystatzky <em>· CEO, Bouillon</em></span>
-        </div>
-        <div class="note" style="margin-top:12px">Übersprungen (fachfremd/Wettbewerber): Narghiza Ergashova, Tuncay Güler, Oliver Rückle.</div>
-      </div>
-      <div class="block good"><h3><span class="bar"></span>Willkommens-Nachrichten · 13 (Erstkontakt nach Vernetzungs-Annahme)</h3>
-        <div class="names">
-          <span class="name">Ronny Roth <em>· GF Zerhoch Maschinenbau</em></span><span class="name">Kevin Tybus <em>· GF Personal Team Service</em></span><span class="name">Marcel Bonnet <em>· Inhaber SIGMAone</em></span><span class="name">Astrid Mangold <em>· GF</em></span><span class="name">Peter Bertling <em>· GF/CFO Bidirex</em></span><span class="name">Christopher Reißmann <em>· Ltg. Techn. Vertrieb, eins energie</em></span><span class="name">Robin Klöckner <em>· GF BHS Großhandel</em></span><span class="name">Sebastian Südhoff <em>· CEO Prodekon</em></span><span class="name">Thomas Noll <em>· GF Noll Sondermaschinenbau</em></span><span class="name">Berat Xhinovci <em>· GF ETG Großhandel</em></span><span class="name">Jochen Schwill <em>· Gründer/GF</em></span><span class="name">Flavius Oancea <em>· GF H. Gautzsch</em></span><span class="name">Mathias Kurz <em>· Gebietsverkaufsleiter massa haus</em></span>
-        </div>
-        <div class="note" style="margin-top:12px">Mehrwert-Vorlage: Buch als Willkommensgeschenk, kein Pitch, Duzen angeboten. Strikter Vernetzungs-Filter ab jetzt – übersprungen (Wettbewerber/Recruiter): Noel Meyer, Parsa Sajadi, Cornelia Droege, Tobias Ortegel, Justus Bortfeldt, Dennis Hacker, Frank Leger. Michael Hollenbenders auf Markus' Wunsch NICHT angeschrieben.</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Kommentare · 3 (Scope erweitert: auch nicht-vernetzte Zielgruppe)</h3>
-        <div class="names">
-          <span class="name">Andreas Kersten <em>· Executive Search/PAWLIK</em></span><span class="name">Dominik Modrach <em>· GF Stadtritter Sicherheitstechnik</em></span><span class="name">Oliver Gromnitza <em>· CSO IT-/DMS-Systemhaus, 2. Grad</em></span>
-        </div>
-        <div class="note" style="margin-top:10px">Antwort-Regel aktiv: Faden mit <b>Andreas Kersten</b> weitergeführt (er antwortete auf Kommentar) + <b>Justin Schönhof</b> unter eigenem Gruppenpost beantwortet. 4. Kommentar morgen (heute nur Wettbewerber/Stellenanzeigen verfügbar → Qualität vor Menge).</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Gruppen-Posts · 2 neue Texte</h3>
-        <div class="note">„Digitalisierung im Vertrieb scheitert selten an der Software" (Prozess vor Tool) → Gruppe Digitalisierung im Vertrieb Mittelstand. „Vertrieb unabhängig von einzelnen Köpfen machen" (Führung) → Gruppe Führung im Mittelstand. Beide zur Admin-Freigabe eingereicht. Unternehmerwelt-Post lief separat.</div>
-      </div>
-      <div class="block warn"><h3><span class="bar"></span>Reagierer</h3>
-        <div class="note warn"><b>Michael Hontz</b> (GF HYDAC): „Dankeschön" → warm gelassen, kein Vertriebs-Zug. <b>Tobias Ortegel</b>: Kalt-Pitch an Markus (Video-Content-Agentur) → keine Reaktion, Markus' Entscheidung.</div>
-      </div>
-    </div>
-  </details>
+<!-- 08.09 -->
+<details class="day">
+<summary>
+<span class="caret">▶</span>
+<span class="date"><span class="d num">08.09.</span><span class="wd">Dienstag</span></span>
+<span class="chips">
+<span class="chip on">🎂 <b>5</b></span>
+<span class="chip on">✉️ <b>2</b></span>
+<span class="chip">💬 <b>0</b></span>
+<span class="chip">📣 <b>0</b></span>
+</span>
+<span class="daytotal num">7<span>Aktionen</span></span>
+</summary>
+<div class="body">
+<div class="block"><h3><span class="bar"></span>Geburtstage · 5 gesendet</h3>
+<div class="names">
+<span class="name">Alexander Scholz <em>· Sie, Head of Sales CAD/CAM</em></span><span class="name">Thomas Schwarze <em>· Du</em></span><span class="name">Gustav Kriese <em>· Du, Director Operational Technology</em></span><span class="name">Andreas Lojewski <em>· Du</em></span><span class="name">Krohn Rosemarie <em>· Du</em></span>
+</div>
+<div class="note" style="margin-top:12px">Übersprungen: <b>Katharina Engler</b> (WEIDA:KEMMA – Seminare/Trainings = Wettbewerberin), <b>Peter Xie</b> (international/fachfremd). Neue Regel ab heute: Wettbewerber auch bei Geburtstagen überspringen.</div>
+</div>
+<div class="block good"><h3><span class="bar"></span>Willkommens-Nachrichten · 2 (Erstkontakt nach Vernetzungs-Annahme)</h3>
+<div class="names">
+<span class="name">Sascha Maas <em>· GF Hansa-Papier Großhandel (Sweet-Spot)</em></span><span class="name">Marc Bieling <em>· Sicherheitslösungen</em></span>
+</div>
+<div class="note" style="margin-top:12px">Übersprungen (Wettbewerber): Noel Meyer, Cornelia Droege, Parsa Sajadi. Restliche Neuzugänge bereits am 07.09. begrüßt.</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Jobwechsel · 0 passende offen</h3>
+<div class="note">Alle Zielkunden bereits erledigt. Offene Einträge waren Wettbewerber/fachfremd: Christoph Dierkes (Karriereberatung), Dario Junk (SDR), Narghiza Ergashova (Coach/international), Oliver Rückle (SalesCraft).</div>
+</div>
+<div class="block warn"><h3><span class="bar"></span>Reagierer · Postfach systematisch geprüft (~18 ungelesene aufgearbeitet)</h3>
+<div class="note warn">Kernbefund: liegengebliebene Reaktionen seit 24.–27.08. — fast alle Höflichkeits-Dankeschöns (warm gehalten). <b>Zwei Ausnahmen:</b> <b>Ulrich Zimmermann</b> (inhaltliche Rückfrage — auf Markus' Wunsch ignoriert) und <b>Martin Stockburger</b> (GF Koncept Hotels, „Nein Danke" = Opt-out → auf STOP-Liste gesetzt).</div>
+</div>
+<div class="block warn"><h3><span class="bar"></span>Kommentare · 0 &amp; Gruppen-Posts · offen (technisch blockiert)</h3>
+<div class="note warn">Kommentare: Content-Suchen lieferten heute nur Wettbewerber/Agenturen/Unternehmensseiten — kein sauberer Zielkunden-Post (Qualität vor Menge). Gruppen-Posts + Kommentieren erfordern den Browser-Eingabe-Kanal, der heute wiederholt ausfiel; sobald stabil, nachziehen. Vernetzungen (Neuanfragen): Dienstag → planmäßig ausgesetzt (Mo/Mi/Fr).</div>
+</div>
+</div>
+</details>
 
-  <!-- 06.09 -->
-  <details class="day">
-    <summary>
-      <span class="caret">▶</span>
-      <span class="date"><span class="d num">06.09.</span><span class="wd">Sonntag</span></span>
-      <span class="chips">
-        <span class="chip on">🎂 <b>12</b></span>
-        <span class="chip on">💬 <b>1</b></span>
-        <span class="chip on">📣 <b>2</b></span>
-      </span>
-      <span class="daytotal num">15<span>Aktionen</span></span>
-    </summary>
-    <div class="body">
-      <div class="block"><h3><span class="bar"></span>Geburtstage · 12 gesendet</h3>
-        <div class="names">
-          <span class="name">Mario Schreier <em>· Du</em></span><span class="name">Heiko Blankenburg <em>· Sie</em></span><span class="name">Michael Buchholz <em>· Sie</em></span><span class="name">Julian Kähler <em>· Du</em></span><span class="name">Holger Zieschank <em>· Sie</em></span><span class="name">Dominik zum Bansen <em>· Du</em></span><span class="name">Simone Messing <em>· Sie</em></span><span class="name">Stefan Schätzle <em>· Du</em></span><span class="name">Christian Parschik <em>· Du</em></span><span class="name">Frank Seltenheim <em>· Du</em></span><span class="name">Louis Schwinghammer <em>· Du</em></span><span class="name">JP S <em>· Sie, nachträgl.</em></span>
-        </div>
-        <div class="note" style="margin-top:12px">Übersprungen: Paul Dumitrescu (bereits 04.09. erledigt). Jobwechsel: 0 passende offen (Oliver Rückle/SalesCraft = Wettbewerber, Rest fachfremd oder erledigt).</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Kommentar · 1.-Grad-Zielkunde</h3>
-        <div class="names">
-          <span class="name">Jan Dierßen <em>· HeizJetzt/Wärmepumpen</em></span>
-        </div>
-        <div class="note" style="margin-top:10px">Post über ehrliche Beratung statt schnellem Verkauf → Kommentar zu nachhaltigem, systematisiertem Vertrieb. Eberhard/Danell/Pedretti (gestern) noch keine Reaktion.</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Gruppen-Posts · 2 eingereicht</h3>
-        <div class="note">Erster Mehrwert-Post „Der teuerste Satz im Mittelstand" (Vertriebsarchitektur) in beide aufgenommene Gruppen gepostet: Digitalisierung im Vertrieb Mittelstand (18.195) + Unternehmerwelt (7.433). Beide zur Admin-Freigabe eingereicht (moderiert).</div>
-      </div>
-      <div class="block warn"><h3><span class="bar"></span>Offen</h3>
-        <div class="note warn">Vernetzungen auf Montag verschoben (Sonntag außerhalb Mo/Mi/Fr-Rhythmus). Reagierer: nur Danke-Nachrichten (warm gehalten, kein Vertrieb) — Zsuzsanna Schomburg, Benedikt Probst, Rüdiger Fischer, Valentino Ludwig u.a.</div>
-      </div>
-    </div>
-  </details>
+<!-- 07.09 -->
+<details class="day">
+<summary>
+<span class="caret">▶</span>
+<span class="date"><span class="d num">07.09.</span><span class="wd">Montag</span></span>
+<span class="chips">
+<span class="chip on">🎂 <b>8</b></span>
+<span class="chip on">🚀 <b>2</b></span>
+<span class="chip on">🤝 <b>28</b></span>
+<span class="chip on">✉️ <b>13</b></span>
+<span class="chip on">💬 <b>3</b></span>
+<span class="chip on">📣 <b>2</b></span>
+</span>
+<span class="daytotal num">56<span>Aktionen</span></span>
+</summary>
+<div class="body">
+<div class="block good"><h3><span class="bar"></span>Vernetzungen · 28 gesendet</h3>
+<div class="note">GF/Inhaber Mittelstand DACH (ohne Notiz, Sweet-Spot Großhandel/Industrie/Beratung) — u.a. Christoph Reyelt, Marcel Bonnet (MIT BW), Dr. Michel Becker (Mittelstand.ai), Peter Bertling (Bidirex), Matthias König, Lorenz Surkemper, Markus Helms, Michael Schröder (Henrich Baustoffzentrum), Sebastian Mähler, Mart Kivikas, Kevin Tybus, Thomas Ehret, Daniel Kalczynski, Jens Woyde. <b>Bei 28 hat LinkedIn gedrosselt</b> — 2 fehlende am Mittwoch mit auf.</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Geburtstage · 8</h3>
+<div class="names">
+<span class="name">Marcel Berg <em>· Sie</em></span><span class="name">Gordon Schumacher <em>· Du</em></span><span class="name">Sven Dabelstein <em>· Du</em></span><span class="name">Johannes Kuhlmann <em>· Du, Buch vorhanden</em></span><span class="name">Tobias Lapper <em>· Sie</em></span><span class="name">Diane-Veronika v. Rautenberg <em>· Du</em></span><span class="name">Christian Volkmer <em>· Du</em></span><span class="name">Nils Gessner <em>· Sie</em></span>
+</div>
+<div class="note" style="margin-top:12px">Übersprungen: Oliver Rückle (SalesCraft = Wettbewerber).</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Jobwechsel · 2</h3>
+<div class="names">
+<span class="name">Carola Bopp <em>· Head of Sales, OneCareer</em></span><span class="name">Sven Freystatzky <em>· CEO, Bouillon</em></span>
+</div>
+<div class="note" style="margin-top:12px">Übersprungen (fachfremd/Wettbewerber): Narghiza Ergashova, Tuncay Güler, Oliver Rückle.</div>
+</div>
+<div class="block good"><h3><span class="bar"></span>Willkommens-Nachrichten · 13 (Erstkontakt nach Vernetzungs-Annahme)</h3>
+<div class="names">
+<span class="name">Ronny Roth <em>· GF Zerhoch Maschinenbau</em></span><span class="name">Kevin Tybus <em>· GF Personal Team Service</em></span><span class="name">Marcel Bonnet <em>· Inhaber SIGMAone</em></span><span class="name">Astrid Mangold <em>· GF</em></span><span class="name">Peter Bertling <em>· GF/CFO Bidirex</em></span><span class="name">Christopher Reißmann <em>· Ltg. Techn. Vertrieb, eins energie</em></span><span class="name">Robin Klöckner <em>· GF BHS Großhandel</em></span><span class="name">Sebastian Südhoff <em>· CEO Prodekon</em></span><span class="name">Thomas Noll <em>· GF Noll Sondermaschinenbau</em></span><span class="name">Berat Xhinovci <em>· GF ETG Großhandel</em></span><span class="name">Jochen Schwill <em>· Gründer/GF</em></span><span class="name">Flavius Oancea <em>· GF H. Gautzsch</em></span><span class="name">Mathias Kurz <em>· Gebietsverkaufsleiter massa haus</em></span>
+</div>
+<div class="note" style="margin-top:12px">Mehrwert-Vorlage: Buch als Willkommensgeschenk, kein Pitch, Duzen angeboten. Strikter Vernetzungs-Filter ab jetzt – übersprungen (Wettbewerber/Recruiter): Noel Meyer, Parsa Sajadi, Cornelia Droege, Tobias Ortegel, Justus Bortfeldt, Dennis Hacker, Frank Leger. Michael Hollenbenders auf Markus' Wunsch NICHT angeschrieben.</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Kommentare · 3 (Scope erweitert: auch nicht-vernetzte Zielgruppe)</h3>
+<div class="names">
+<span class="name">Andreas Kersten <em>· Executive Search/PAWLIK</em></span><span class="name">Dominik Modrach <em>· GF Stadtritter Sicherheitstechnik</em></span><span class="name">Oliver Gromnitza <em>· CSO IT-/DMS-Systemhaus, 2. Grad</em></span>
+</div>
+<div class="note" style="margin-top:10px">Antwort-Regel aktiv: Faden mit <b>Andreas Kersten</b> weitergeführt (er antwortete auf Kommentar) + <b>Justin Schönhof</b> unter eigenem Gruppenpost beantwortet. 4. Kommentar morgen (heute nur Wettbewerber/Stellenanzeigen verfügbar → Qualität vor Menge).</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Gruppen-Posts · 2 neue Texte</h3>
+<div class="note">„Digitalisierung im Vertrieb scheitert selten an der Software" (Prozess vor Tool) → Gruppe Digitalisierung im Vertrieb Mittelstand. „Vertrieb unabhängig von einzelnen Köpfen machen" (Führung) → Gruppe Führung im Mittelstand. Beide zur Admin-Freigabe eingereicht. Unternehmerwelt-Post lief separat.</div>
+</div>
+<div class="block warn"><h3><span class="bar"></span>Reagierer</h3>
+<div class="note warn"><b>Michael Hontz</b> (GF HYDAC): „Dankeschön" → warm gelassen, kein Vertriebs-Zug. <b>Tobias Ortegel</b>: Kalt-Pitch an Markus (Video-Content-Agentur) → keine Reaktion, Markus' Entscheidung.</div>
+</div>
+</div>
+</details>
 
-  <!-- 05.09 -->
-  <details class="day">
-    <summary>
-      <span class="caret">▶</span>
-      <span class="date"><span class="d num">05.09.</span><span class="wd">Freitag</span></span>
-      <span class="chips">
-        <span class="chip on">🎂 <b>11</b></span>
-        <span class="chip on">🚀 <b>1</b></span>
-        <span class="chip on">🤝 <b>29</b></span>
-        <span class="chip on">💬 <b>3</b></span>
-        <span class="chip on">👥 <b>7</b></span>
-        <span class="chip on">🎯 <b>1</b></span>
-      </span>
-      <span class="daytotal num">52<span>Aktionen</span></span>
-    </summary>
-    <div class="body">
-      <div class="block"><h3><span class="bar"></span>Kommentare · 1.-Grad-Zielkunden</h3>
-        <div class="names">
-          <span class="name">Jens Patrick Eberhard <em>· MD Aluprof</em></span>
-          <span class="name">Michael Danell <em>· Automobilhandel</em></span>
-          <span class="name">Lucas Pedretti <em>· CEO Qymatix</em></span>
-        </div>
-      </div>
-      <div class="block good"><h3><span class="bar"></span>Vernetzungen · 29 gesendet</h3>
-        <div class="note"><b>29 von 30 Anfragen</b> an GF/Inhaber Mittelstand DACH gesendet (ohne Notiz, Sweet-Spot Großhandel/Industrie). Die 30. blockierte LinkedIn wegen des Wochenlimits — nächste Woche nachholbar.</div>
-      </div>
-      <div class="block warn"><h3><span class="bar"></span>Gespräche · Reagierer geprüft</h3>
-        <div class="note warn"><b>Guido Boardman</b> — Buch-Download klappte nicht (2× gemeldet). Antwort mit Download-Hilfe + Buch-Frage formuliert, noch zu senden (Extension-Versand blockiert).</div>
-        <div style="margin-top:10px" class="note"><b>Beantwortet (von Markus):</b> Heiko Wickert, Felix Kording. — <b>Danke-Reaktionen offen</b> (warm halten, kein Vertrieb): Oliver Brendle, Valentino Ludwig, Paul Hilliger, David Wiedau, Gert Leder, Kai-Uwe Hintersdorf.</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Gruppen · 7 Beitritte gesendet</h3>
-        <div class="note">Reichweiten-Hebel eingerichtet. Sofort Mitglied: Unternehmerwelt (7.432). Ausstehend: Digitalisierung im Vertrieb Mittelstand (18.187), UIM (3.866), Vertrieb 4.0 (1.564), Expertengruppe B2B Vertrieb DACH (1.384), Führung im Mittelstand (560), IT-Unternehmer (356).</div>
-      </div>
-    </div>
-  </details>
+<!-- 06.09 -->
+<details class="day">
+<summary>
+<span class="caret">▶</span>
+<span class="date"><span class="d num">06.09.</span><span class="wd">Sonntag</span></span>
+<span class="chips">
+<span class="chip on">🎂 <b>12</b></span>
+<span class="chip on">💬 <b>1</b></span>
+<span class="chip on">📣 <b>2</b></span>
+</span>
+<span class="daytotal num">15<span>Aktionen</span></span>
+</summary>
+<div class="body">
+<div class="block"><h3><span class="bar"></span>Geburtstage · 12 gesendet</h3>
+<div class="names">
+<span class="name">Mario Schreier <em>· Du</em></span><span class="name">Heiko Blankenburg <em>· Sie</em></span><span class="name">Michael Buchholz <em>· Sie</em></span><span class="name">Julian Kähler <em>· Du</em></span><span class="name">Holger Zieschank <em>· Sie</em></span><span class="name">Dominik zum Bansen <em>· Du</em></span><span class="name">Simone Messing <em>· Sie</em></span><span class="name">Stefan Schätzle <em>· Du</em></span><span class="name">Christian Parschik <em>· Du</em></span><span class="name">Frank Seltenheim <em>· Du</em></span><span class="name">Louis Schwinghammer <em>· Du</em></span><span class="name">JP S <em>· Sie, nachträgl.</em></span>
+</div>
+<div class="note" style="margin-top:12px">Übersprungen: Paul Dumitrescu (bereits 04.09. erledigt). Jobwechsel: 0 passende offen (Oliver Rückle/SalesCraft = Wettbewerber, Rest fachfremd oder erledigt).</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Kommentar · 1.-Grad-Zielkunde</h3>
+<div class="names">
+<span class="name">Jan Dierßen <em>· HeizJetzt/Wärmepumpen</em></span>
+</div>
+<div class="note" style="margin-top:10px">Post über ehrliche Beratung statt schnellem Verkauf → Kommentar zu nachhaltigem, systematisiertem Vertrieb. Eberhard/Danell/Pedretti (gestern) noch keine Reaktion.</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Gruppen-Posts · 2 eingereicht</h3>
+<div class="note">Erster Mehrwert-Post „Der teuerste Satz im Mittelstand" (Vertriebsarchitektur) in beide aufgenommene Gruppen gepostet: Digitalisierung im Vertrieb Mittelstand (18.195) + Unternehmerwelt (7.433). Beide zur Admin-Freigabe eingereicht (moderiert).</div>
+</div>
+<div class="block warn"><h3><span class="bar"></span>Offen</h3>
+<div class="note warn">Vernetzungen auf Montag verschoben (Sonntag außerhalb Mo/Mi/Fr-Rhythmus). Reagierer: nur Danke-Nachrichten (warm gehalten, kein Vertrieb) — Zsuzsanna Schomburg, Benedikt Probst, Rüdiger Fischer, Valentino Ludwig u.a.</div>
+</div>
+</div>
+</details>
 
-  <!-- 04.09 -->
-  <details class="day">
-    <summary>
-      <span class="caret">▶</span>
-      <span class="date"><span class="d num">04.09.</span><span class="wd">Donnerstag</span></span>
-      <span class="chips">
-        <span class="chip on">🎂 <b>17</b></span>
-        <span class="chip on">🚀 <b>6</b></span>
-        <span class="chip on">🤝 <b>30</b></span>
-      </span>
-      <span class="daytotal num">53<span>Aktionen</span></span>
-    </summary>
-    <div class="body">
-      <div class="block good"><h3><span class="bar"></span>Vernetzungen · 30 gesendet</h3>
-        <div class="note">Erste 3 breit („Geschäftsführer"): Hendrik Westendorff, Jochen Schwill, Benjamin Oechsle. Danach 27 gezielt im Sweet-Spot technischer Großhandel/Industrie — u.a. Dietmar Hauptmann (Eisenhandel), Ralf Lohrmann (Elektro-Großhandel), Kay Jäger, Steffen Mayle (Sanitär/Heizung), Jan Deyhle (Glasgroßhandel), Markus Thoben (Team Beverage), Sascha Maas (Hansa-Papier), Jürgen Laukandt (Euro Stahl-Handel).</div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Geburtstage · 17</h3>
-        <div class="names">
-          <span class="name">Mouez Feriani</span><span class="name">Maximilian Skaba</span><span class="name">René Muders</span><span class="name">Felix Kording</span><span class="name">Samuel A. Tomic</span><span class="name">Kevin Grote</span><span class="name">Lili Petra Wlasitsch</span><span class="name">Holger Groote</span><span class="name">hüseyin nair</span><span class="name">Isabella Dapka</span><span class="name">Oliver Brendle</span><span class="name">Guido Boardman</span><span class="name">Tobias Loock</span><span class="name">Daniel Keinath</span><span class="name">Dennis Heitzmann</span><span class="name">Gökmen Isik</span><span class="name">Christian Beer</span>
-        </div>
-      </div>
-      <div class="block"><h3><span class="bar"></span>Jobwechsel · 6</h3>
-        <div class="names">
-          <span class="name">Uli Neumair <em>· Sattler SUN-TEX</em></span><span class="name">Michael Hontz <em>· HYDAC</em></span><span class="name">Heiko Wickert <em>· PreZero</em></span><span class="name">Kai Wilhelm <em>· Holcim</em></span><span class="name">Alessandro Giessler <em>· Averbis</em></span><span class="name">Tomasz Kroker <em>· ServiceNow</em></span>
-        </div>
-      </div>
-    </div>
-  </details>
+<!-- 05.09 -->
+<details class="day">
+<summary>
+<span class="caret">▶</span>
+<span class="date"><span class="d num">05.09.</span><span class="wd">Freitag</span></span>
+<span class="chips">
+<span class="chip on">🎂 <b>11</b></span>
+<span class="chip on">🚀 <b>1</b></span>
+<span class="chip on">🤝 <b>29</b></span>
+<span class="chip on">💬 <b>3</b></span>
+<span class="chip on">🎯 <b>1</b></span>
+</span>
+<span class="daytotal num">45<span>Aktionen</span></span>
+</summary>
+<div class="body">
+<div class="block"><h3><span class="bar"></span>Kommentare · 1.-Grad-Zielkunden</h3>
+<div class="names">
+<span class="name">Jens Patrick Eberhard <em>· MD Aluprof</em></span>
+<span class="name">Michael Danell <em>· Automobilhandel</em></span>
+<span class="name">Lucas Pedretti <em>· CEO Qymatix</em></span>
+</div>
+</div>
+<div class="block good"><h3><span class="bar"></span>Vernetzungen · 29 gesendet</h3>
+<div class="note"><b>29 von 30 Anfragen</b> an GF/Inhaber Mittelstand DACH gesendet (ohne Notiz, Sweet-Spot Großhandel/Industrie). Die 30. blockierte LinkedIn wegen des Wochenlimits — nächste Woche nachholbar.</div>
+</div>
+<div class="block warn"><h3><span class="bar"></span>Gespräche · Reagierer geprüft</h3>
+<div class="note warn"><b>Guido Boardman</b> — Buch-Download klappte nicht (2× gemeldet). Antwort mit Download-Hilfe + Buch-Frage formuliert, noch zu senden (Extension-Versand blockiert).</div>
+<div style="margin-top:10px" class="note"><b>Beantwortet (von Markus):</b> Heiko Wickert, Felix Kording. — <b>Danke-Reaktionen offen</b> (warm halten, kein Vertrieb): Oliver Brendle, Valentino Ludwig, Paul Hilliger, David Wiedau, Gert Leder, Kai-Uwe Hintersdorf.</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Gruppen · 7 Beitritte gesendet (Status, keine Tages-Aktion)</h3>
+<div class="note">Reichweiten-Hebel eingerichtet. Sofort Mitglied: Unternehmerwelt (7.432). Ausstehend: Digitalisierung im Vertrieb Mittelstand (18.187), UIM (3.866), Vertrieb 4.0 (1.564), Expertengruppe B2B Vertrieb DACH (1.384), Führung im Mittelstand (560), IT-Unternehmer (356). Hinweis: Gruppen-Beitritte zählen als Status, nicht in die Tages-Aktionssumme.</div>
+</div>
+</div>
+</details>
 
-  <!-- 02.09 -->
-  <details class="day">
-    <summary>
-      <span class="caret">▶</span>
-      <span class="date"><span class="d num">02.09.</span><span class="wd">Dienstag</span></span>
-      <span class="chips">
-        <span class="chip on">🚀 <b>28</b></span>
-      </span>
-      <span class="daytotal num">28<span>Aktionen</span></span>
-    </summary>
-    <div class="body">
-      <div class="block"><h3><span class="bar"></span>Jobwechsel · 28 gesendet</h3>
-        <div class="names">
-          <span class="name">Timo Lichter</span><span class="name">Daniel Siemsen</span><span class="name">Sebastian Weyts</span><span class="name">Aho Hanno</span><span class="name">Wiebke Kröll</span><span class="name">Kai Seifried</span><span class="name">Simon Brinkmöller</span><span class="name">Michael Bülter</span><span class="name">Sarah Wachholz</span><span class="name">Doreen Kettlitz</span><span class="name">Daniel Hellmann</span><span class="name">Volker Dunker</span><span class="name">Antje-Katrin Grobecker</span><span class="name">Sebastian von Holtum</span><span class="name">Marcel Peters</span><span class="name">Sascha Fischer</span><span class="name">Daniel Gutierrez Blanco</span><span class="name">Sandra Aline Emmerich</span><span class="name">Valentino Ludwig</span><span class="name">Eleni Symeonidou</span><span class="name">Johannes Kuhlmann</span><span class="name">Bartholomäus Prange</span><span class="name">Anas Kombaz</span><span class="name">Stephan Hütter</span><span class="name">Andreas Höschele</span><span class="name">Thorsten Böhm</span><span class="name">Christian Stampfl</span>
-        </div>
-        <div class="note" style="margin-top:12px">Übersprungen (fachfremd): Md Milan Mollah.</div>
-      </div>
-    </div>
-  </details>
+<!-- 04.09 -->
+<details class="day">
+<summary>
+<span class="caret">▶</span>
+<span class="date"><span class="d num">04.09.</span><span class="wd">Donnerstag</span></span>
+<span class="chips">
+<span class="chip on">🎂 <b>17</b></span>
+<span class="chip on">🚀 <b>6</b></span>
+<span class="chip on">🤝 <b>30</b></span>
+</span>
+<span class="daytotal num">53<span>Aktionen</span></span>
+</summary>
+<div class="body">
+<div class="block good"><h3><span class="bar"></span>Vernetzungen · 30 gesendet</h3>
+<div class="note">Erste 3 breit („Geschäftsführer"): Hendrik Westendorff, Jochen Schwill, Benjamin Oechsle. Danach 27 gezielt im Sweet-Spot technischer Großhandel/Industrie — u.a. Dietmar Hauptmann (Eisenhandel), Ralf Lohrmann (Elektro-Großhandel), Kay Jäger, Steffen Mayle (Sanitär/Heizung), Jan Deyhle (Glasgroßhandel), Markus Thoben (Team Beverage), Sascha Maas (Hansa-Papier), Jürgen Laukandt (Euro Stahl-Handel).</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Geburtstage · 17</h3>
+<div class="names">
+<span class="name">Mouez Feriani</span><span class="name">Maximilian Skaba</span><span class="name">René Muders</span><span class="name">Felix Kording</span><span class="name">Samuel A. Tomic</span><span class="name">Kevin Grote</span><span class="name">Lili Petra Wlasitsch</span><span class="name">Holger Groote</span><span class="name">hüseyin nair</span><span class="name">Isabella Dapka</span><span class="name">Oliver Brendle</span><span class="name">Guido Boardman</span><span class="name">Tobias Loock</span><span class="name">Daniel Keinath</span><span class="name">Dennis Heitzmann</span><span class="name">Gökmen Isik</span><span class="name">Christian Beer</span>
+</div>
+</div>
+<div class="block"><h3><span class="bar"></span>Jobwechsel · 6</h3>
+<div class="names">
+<span class="name">Uli Neumair <em>· Sattler SUN-TEX</em></span><span class="name">Michael Hontz <em>· HYDAC</em></span><span class="name">Heiko Wickert <em>· PreZero</em></span><span class="name">Kai Wilhelm <em>· Holcim</em></span><span class="name">Alessandro Giessler <em>· Averbis</em></span><span class="name">Tomasz Kroker <em>· ServiceNow</em></span>
+</div>
+</div>
+</div>
+</details>
 
-  <!-- 31.08 -->
-  <details class="day">
-    <summary>
-      <span class="caret">▶</span>
-      <span class="date"><span class="d num">31.08.</span><span class="wd">Sonntag</span></span>
-      <span class="chips">
-        <span class="chip on">🎂 <b>31</b></span>
-      </span>
-      <span class="daytotal num">31<span>Aktionen</span></span>
-    </summary>
-    <div class="body">
-      <div class="block"><h3><span class="bar"></span>Geburtstage · 31 gesendet (2 Runden)</h3>
-        <div class="note">Runde 1 (10): Ralf Schnitzler, Udo Diesmann, Andreas Karnatz, Fabian Uetz, Daniel Würges, Andreas Zeiß, Kai-Uwe Hintersdorf, David Kanzy, Gert Leder, Tobias Rosendahl.</div>
-        <div class="names" style="margin-top:12px">
-          <span class="name">Laurent Corti</span><span class="name">Jörg Schaller</span><span class="name">Dirk Fasold</span><span class="name">Saydar Al-Mandawi</span><span class="name">Marcel Hoepfer</span><span class="name">Frederic Lanz</span><span class="name">Lisa Weimer</span><span class="name">Mirko Simnovec</span><span class="name">Andreas Oliver Goldhahn</span><span class="name">Stefan Haunberger</span><span class="name">Harry Dhillon</span><span class="name">Daniel Mützel</span><span class="name">Mehmet Celik</span><span class="name">Christoph Held</span><span class="name">Karolina Bucewka</span><span class="name">Andreas Hummel</span><span class="name">Maximilian Krüger</span><span class="name">Carsten Brauer</span><span class="name">Lucas Seel</span><span class="name">Felina Morgen</span><span class="name">Rüdiger Fischer</span><span class="name">Sven Fischer</span>
-        </div>
-      </div>
-    </div>
-  </details>
+<!-- 02.09 -->
+<details class="day">
+<summary>
+<span class="caret">▶</span>
+<span class="date"><span class="d num">02.09.</span><span class="wd">Dienstag</span></span>
+<span class="chips">
+<span class="chip on">🚀 <b>28</b></span>
+</span>
+<span class="daytotal num">28<span>Aktionen</span></span>
+</summary>
+<div class="body">
+<div class="block"><h3><span class="bar"></span>Jobwechsel · 28 gesendet</h3>
+<div class="names">
+<span class="name">Timo Lichter</span><span class="name">Daniel Siemsen</span><span class="name">Sebastian Weyts</span><span class="name">Aho Hanno</span><span class="name">Wiebke Kröll</span><span class="name">Kai Seifried</span><span class="name">Simon Brinkmöller</span><span class="name">Michael Bülter</span><span class="name">Sarah Wachholz</span><span class="name">Doreen Kettlitz</span><span class="name">Daniel Hellmann</span><span class="name">Volker Dunker</span><span class="name">Antje-Katrin Grobecker</span><span class="name">Sebastian von Holtum</span><span class="name">Marcel Peters</span><span class="name">Sascha Fischer</span><span class="name">Daniel Gutierrez Blanco</span><span class="name">Sandra Aline Emmerich</span><span class="name">Valentino Ludwig</span><span class="name">Eleni Symeonidou</span><span class="name">Johannes Kuhlmann</span><span class="name">Bartholomäus Prange</span><span class="name">Anas Kombaz</span><span class="name">Stephan Hütter</span><span class="name">Andreas Höschele</span><span class="name">Thorsten Böhm</span><span class="name">Christian Stampfl</span>
+</div>
+<div class="note" style="margin-top:12px">Übersprungen (fachfremd): Md Milan Mollah.</div>
+</div>
+</div>
+</details>
 
-  <footer>
-    <span>Vertriebsarchitektur · planbarer Vertrieb, unabhängig von einzelnen Akteuren</span>
-    <span>Zeitraum 31.08.–13.09.2026</span>
-  </footer>
+<!-- 31.08 -->
+<details class="day">
+<summary>
+<span class="caret">▶</span>
+<span class="date"><span class="d num">31.08.</span><span class="wd">Sonntag</span></span>
+<span class="chips">
+<span class="chip on">🎂 <b>31</b></span>
+</span>
+<span class="daytotal num">31<span>Aktionen</span></span>
+</summary>
+<div class="body">
+<div class="block"><h3><span class="bar"></span>Geburtstage · 31 gesendet (2 Runden)</h3>
+<div class="note">Runde 1 (10): Ralf Schnitzler, Udo Diesmann, Andreas Karnatz, Fabian Uetz, Daniel Würges, Andreas Zeiß, Kai-Uwe Hintersdorf, David Kanzy, Gert Leder, Tobias Rosendahl.</div>
+<div class="names" style="margin-top:12px">
+<span class="name">Laurent Corti</span><span class="name">Jörg Schaller</span><span class="name">Dirk Fasold</span><span class="name">Saydar Al-Mandawi</span><span class="name">Marcel Hoepfer</span><span class="name">Frederic Lanz</span><span class="name">Lisa Weimer</span><span class="name">Mirko Simnovec</span><span class="name">Andreas Oliver Goldhahn</span><span class="name">Stefan Haunberger</span><span class="name">Harry Dhillon</span><span class="name">Daniel Mützel</span><span class="name">Mehmet Celik</span><span class="name">Christoph Held</span><span class="name">Karolina Bucewka</span><span class="name">Andreas Hummel</span><span class="name">Maximilian Krüger</span><span class="name">Carsten Brauer</span><span class="name">Lucas Seel</span><span class="name">Felina Morgen</span><span class="name">Rüdiger Fischer</span><span class="name">Sven Fischer</span>
+</div>
+</div>
+</div>
+</details>
+
+<footer>
+<span>Vertriebsarchitektur · planbarer Vertrieb, unabhängig von einzelnen Akteuren</span>
+<span>Zeitraum 31.08.–14.09.2026 · Gesamt = Summe aller Tage (344)</span>
+</footer>
 </div>
