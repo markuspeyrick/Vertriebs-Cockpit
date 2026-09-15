@@ -81,6 +81,8 @@ h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(30px,5vw
 .kpi.total .lab{color:rgba(255,255,255,.86)}
 .kpi.status{background:var(--surface-2);border-style:dashed}
 .kpi.status .val{color:var(--ink-soft)}
+.kpi.goal{background:var(--good-soft);border-color:var(--good)}
+.kpi.goal .val{color:var(--good)}
 
 .legend{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:26px 0 14px;font-size:13px;color:var(--ink-soft)}
 .legend .dot{display:inline-flex;align-items:center;gap:7px}
@@ -142,6 +144,8 @@ summary{grid-template-columns:auto 1fr;gap:12px}
 <div class="kpi"><div class="val num">12</div><div class="lab">💬 Kommentare</div></div>
 <div class="kpi"><div class="val num">10</div><div class="lab">📣 Gruppen-Beiträge</div></div>
 <div class="kpi"><div class="val num">20</div><div class="lab">🎯 Gespräche</div></div>
+<div class="kpi goal"><div class="val num">0</div><div class="lab">🗓️ Termine vereinbart (Ziel ≥1/Tag)</div></div>
+<div class="kpi status"><div class="val num">1</div><div class="lab">⏳ Termine angebahnt (offen)</div></div>
 <div class="kpi status"><div class="val num">4</div><div class="lab">👥 Gruppen aktiv (Status, zählt nicht mit)</div></div>
 </section>
 
@@ -168,7 +172,7 @@ summary{grid-template-columns:auto 1fr;gap:12px}
 <div class="names">
 <span class="name">Christopher Reißmann <em>· Leiter Technischer Vertrieb, eins energie in sachsen · ICP</em></span>
 </div>
-<div class="note" style="margin-top:10px"><b>Termin erwirkt (ohne Hardselling):</b> Er baut gerade seinen Vertrieb neu auf (bald 2 Vertriebler) und antwortete auf das 20-Min-Angebot mit „Das können wir so machen 👍". → Terminanbahnung gesendet: <b>beide Wege angeboten</b> — Calendly-Slot ODER kurzer Anruf (Handynummer), ganz nach seinem Wunsch. Wartet auf Slot-Buchung/Nummer.</div>
+<div class="note warn" style="margin-top:10px"><b>Status: angebahnt — noch nicht fest vereinbart.</b> Er baut gerade seinen Vertrieb neu auf (bald 2 Vertriebler) und antwortete auf das 20-Min-Angebot mit „Das können wir so machen 👍". → Terminanbahnung gesendet: <b>beide Wege angeboten</b> — Calendly-Slot ODER kurzer Anruf (Handynummer), ganz nach seinem Wunsch. <b>Offen:</b> wartet auf Slot-Buchung/Nummer; erst dann zählt er als „Termin vereinbart".</div>
 </div>
 <div class="block"><h3><span class="bar"></span>Gespräche · 8 (Postfach: Termine, Pivots &amp; B1)</h3>
 <div class="names">
